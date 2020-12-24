@@ -1,6 +1,7 @@
 <?php
 
 require_once 'src/controllers/DefaultController.php';
+require_once 'src/controllers/SecurityController.php';
 
 class Routing 
 {
@@ -22,6 +23,8 @@ class Routing
 
         $controller_name = self::$routes[$action];
         $actual_controller = new $controller_name();
+
+        $action = $action ?: 'index';
 
         $actual_controller->$action();
     }

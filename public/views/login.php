@@ -26,10 +26,19 @@
                 OR
             </div>
             <div class="login">
-                <form>
+                <form action="login" method="post">
+                    <div class = "message">
+                        <?php
+                        if(isset($messages)) {
+                            foreach ($messages as $message) {
+                                echo $message;
+                            }
+                        }
+                        ?>
+                    </div>>
                     <input name="email" type="text" placeholder="user email">
                     <input name="password" type="password" placeholder="user password">
-                    <button>LOG IN</button>
+                    <button type="submit">LOG IN</button>
                 </form>
             </div>
         </div>

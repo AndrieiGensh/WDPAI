@@ -2,12 +2,13 @@
 
 require_once 'AppController.php';
 require_once __DIR__.'/../models/User.php';
+require_once __DIR__.'/../DAO/UserDAO.php';
 
 class SecurityController extends AppController
 {
     public function login()
     {
-        $temporary_user = new User('alfredshore@gmail.com', 'password', 'Alfred', 'Shore');
+        $userDao = new UserDAO();
 
         if($this->isPOST())
         {
@@ -17,15 +18,18 @@ class SecurityController extends AppController
         $email = $_POST["email"];
         $password  =$_POST['password'];
 
-        if($temporary_user->getEmail() !== $email)
+        $user = $userDao->getUser($email);
+
+        if($user===null)
         {
-            return $this->render("login", ['messages' => ['user with this email does not exist']]);
+            return $this->render("login", ["messages" => ["User does not exist"]]);
         }
 
-        if($temporary_user->getPassword() !== $password)
+        if($user->getPassword() != $password)
         {
-            return $this->render("login", ['messages' => ['wrong password']]);
+            return $this->render("login", ["messages" => ["Wrong password was provided"]]);
         }
+
 
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/profile");

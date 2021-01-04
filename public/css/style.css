@@ -1,6 +1,5 @@
-
 body {
-    margin: 0;  
+    margin: 0; 
     background-color: rgb(15, 15, 15);
 }
 
@@ -15,7 +14,17 @@ span {
     flex-direction: column;
 }
 
-.wrapper footer {
+::-webkit-scrollbar{
+    width: 0.5rem;
+    max-height: 0.3rem;
+}
+
+::-webkit-scrollbar-thumb{
+    background: #f6f6f6;
+}
+
+body footer {
+    z-index: 2;
     position: fixed;
     left: 0;
     bottom: 0;
@@ -29,6 +38,8 @@ span {
 .wrapper main {
     display: flex;
     flex-direction: row;
+    overflow: hidden;
+    position: relative;
 }
 
 .wrapper main .sidebar {
@@ -43,9 +54,23 @@ span {
 }
 
 .wrapper main .settings-content{
+    display: grid;
     width: 100%;
     height: 100vh;
     margin-left: 15em;
+    grid-template-columns: 1fr 1fr;
+    grid-row-gap: 1.2em;
+    overflow: auto;
+}
+
+.wrapper main .settings-content::after{
+    content: ' ';
+    margin-right:15em;
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+    opacity: 0.5;
     background-image: url('../img/camera.jpg');
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -53,21 +78,125 @@ span {
     background-attachment: fixed;
 }
 
-.wrapper main .profile-content{
-    width: 100%;
-    height: 100vh;
-    margin-left: 15em;
-    background-image: url('../img/mountains.jpg');
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    opacity: 50%;
-    background-attachment: fixed;
+.wrapper main .settings-content .settings{
+    display: grid;
+    z-index: 2;
+    justify-content: center;
+    align-content: center;
+    grid-template-columns: 1fr;
+    position: relative;
+    grid-auto-rows: max-content;
+    grid-row-gap: 2rem;
+}
+
+.wrapper main .settings-content .settings .settings-handle{
+    width: 10rem;
+    height: 5rem;
+    background-color: #EFD09A;
+    border: 0.2rem solid #707070;
+    clip-path: polygon( 0% 0%, 100% 0%, 100% 100%, 80% 100%, 80% 35%, 20% 35%, 20% 100%, 0% 100%);
+    z-index: 2;
+    position: relative;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.wrapper main .settings-content .settings .upper-part{
+    width: 85%;
+    min-height: 10rem;
+    border-radius: 60px 60px 0px 0px;
+    background-color: #EFD09A;
+    border: 0.2rem solid #707070;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.wrapper main .settings-content .settings .middle-part{
+    width: 85%;
+    min-height: 8rem;
+    border-radius: 0;
+    background-color: #EFD09A;
+    border: 0.2rem solid #707070;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.wrapper main .settings-content .settings .bottom-part{
+    width: 85%;
+    min-height: 10rem;
+    border-radius: 0px 0px 60px 60px;
+    background-color: #EFD09A;
+    border: 0.2rem solid #707070;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.wrapper main .settings-content .settings .settings-buttons{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 2rem;
+}
+
+.wrapper main .settings-content .settings .settings-buttons>.save-settings,.default-settings{
+    min-width: 70%;
+    height: 3rem;
+    border-radius: 60px 60px 60px 60px;
+    background-color: #EFD09A;
+    border: 0.2rem solid #707070;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.wrapper main .settings-content .settings .settings-buttons>.save-settings:hover,.default-settings:hover{
+    transform: scale(1.1);
+    transition-duration: 0.5s;
+    border-color: black;
+}
+
+.wrapper main .settings-content .settings .setting-header{
+    position: relative;
+    z-index: 2;
+    top: 0;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.wrapper main .settings-content .settings .setting-header>h4{
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.wrapper main .settings-content .settings .setting-header .setting-header-underline{
+    max-width: 80%;
+    height: 0.05rem;
+    background-color: black;
+    position: relative;
+    z-index: 2;
+    align-self: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .wrapper main .forum-content{
+    display: grid;
     width: 100%;
     height: 100vh;
     margin-left: 15em;
+    grid-template-columns: 1fr;
+    grid-auto-rows: max-content;
+    grid-row-gap: 1.2em;
+    overflow: auto;
+}
+
+.wrapper main .forum-content::before{
+    content: ' ';
+    margin-right:15em;
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+    opacity: 0.5;
     background-image: url('../img/typewriter.jpg');
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -75,22 +204,412 @@ span {
     background-attachment: fixed;
 }
 
-.wrapper main .collection-content{
+.wrapper main .forum-content .friends-news{
+    display: block;
+    width: 100%;
+    overflow: overlay;
+    white-space: nowrap;
+    z-index: 2;
+    position: relative;
+}
+
+.wrapper main .forum-content .friends-news::-webkit-scrollbar{
+    width: 0;
+    height: 0;
+}
+
+.wrapper main .forum-content .friend-icon{
+    display: inline-block;
+    min-width: 4em;
+    min-height: 4em;
+    max-height: 4em;
+    border-radius: 50%;
+    background-color: white;
+    border: 3px solid #FE0303;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin: 1em;
+    z-index: 2;
+    position: relative;
+    background-image: url('../img/travel.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.wrapper main .forum-content .horizontal-underline{
+    width: 80%;
+    height: 0.3em;
+    background-color: rgb(203, 183, 183);
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 2;
+    position: relative;
+}
+
+.wrapper main .forum-content .general-news{
+    display: flex;
+    flex-direction: row;
+    z-index: 2;
+    position: relative;
+}
+
+.wrapper main .forum-content .general-news .news-artickle{
+    height: 10em;
+    background-color: #EFD09A;
+    z-index: 2;
+    position: relative;
+    width: 85%;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    text-align: center;
+    margin-top: 1rem;
+    padding: 1rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: normal;
+}
+
+.wrapper main .forum-content .general-news .news-artickle::after{
+    top: 8em;
+    left: 0;
+    content: ' ';
+    position: absolute;
+    width: 100%;
+    height: 4em;
+    background: linear-gradient(to bottom, rgba(240, 230, 140, 0), rgba(240, 230, 140, 1));
+}
+
+.wrapper main .forum-content .friends-posts{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: max-content;
+    grid-row-gap: 1em;
+    position: relative;
+    z-index: 2;
+    overflow: visible;
+    padding-bottom: 3em;
+}
+
+.wrapper main .forum-content .friends-posts .post{
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    position: relative;
+    z-index: 2;
+}
+
+.wrapper main .forum-content .friends-posts .post .post-content{
+    height: auto;
+    background-color: khaki;
+    z-index: 2;
+    position: relative;
+    max-width: 85%;
+    margin-left: 1em;
+    margin-right: 1em;
+    text-align: center;
+    font-size: 1.2em;
+    border-radius: 30px;
+    margin-top: 1em;
+    padding: 1em;
+    padding-bottom: 0;
+    padding-top: 1rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: normal;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper main .forum-content .friends-posts .post .post-content .date{
+    position: relative;
+    width: auto;
+    bottom: 0;
+    right: 2em;
+    margin-left: auto;
+    font-size: 0.8em;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.wrapper main .profile-content{
+    display: grid;
     width: 100%;
     height: 100vh;
     margin-left: 15em;
-    background-image: url('../img/old.jpg');
+
+    grid-template-columns: 1fr;
+    grid-row-gap: 1.2em;
+    grid-auto-rows: min-content;
+}
+
+.wrapper main .profile-content::after{
+    content: ' ';
+    margin-right:15em;
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+    opacity: 0.5;
+    background-image: url('../img/mountains.jpg');
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    opacity: 50%;
     background-attachment: fixed;
 }
 
-.wrapper main .collection-div {
-    width: 80%;
-    height: 30vh;
+.wrapper main .profile-content .profile-head {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    z-index: 2;
+    position: relative;
 }
 
+.wrapper main .profile-content .profile-head .profile-image{
+    width: 6em;
+    height: 6em;
+    border-radius: 50%;
+    background-color: white;
+    border: 3px solid #FE0303;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 2;
+    position: relative;
+    background-image: url('../img/travel.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.wrapper main .profile-content .profile-head h2{
+    padding: 0;
+    margin: 0;
+    z-index: 2;
+    position: relative;
+}
+
+.wrapper main .profile-content .profile-head .underline{
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: 0.2em;
+    background-color: black;
+    margin-top: 0%;
+    padding: 0%;
+    z-index: 2;
+    position: relative;
+}
+
+.wrapper main .profile-content .about-me-section{
+    z-index: 2;
+}
+
+.wrapper main .profile-content .about-me-section .about-me{
+    margin-left: 0%;
+    width: 30%;
+    height: 2.5em;
+    background-color: rgb(222, 198, 198);
+    z-index: 2;
+    border-radius: 0 30px 30px 0;
+    text-align: center;
+    font-size: 1.2em;
+    padding-top: 1em;
+}
+
+.wrapper main .profile-content .my-travelers-code-section{
+    z-index: 2;
+}
+
+.wrapper main .profile-content .my-travelers-code-section .travelers-code{
+    margin-left: 0%;
+    width: 40%;
+    height: 2.5em;
+    background-color: rgb(222, 198, 198);
+    z-index: 2;
+    border-radius: 0 30px 30px 0;
+    text-align: center;
+    padding-bottom: 0.5em;
+    padding-top: 0.5em;
+    
+}
+
+.wrapper main .profile-content .my-travelers-code-section .travelers-code .h3{
+    font-size: 1.2em;
+    position: relative;
+}
+
+.wrapper main .profile-content .text-bubble{
+    z-index: 2;
+    position: relative;
+    width: 85%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.2em;
+    background-color: khaki;
+    border-radius: 30px;
+    text-align: center;
+    margin-top: 1em;
+}
+
+.wrapper main .profile-content .text-bubble>div{
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    padding-top:1.5em;
+    padding-bottom: 1.5em;
+}
+
+.wrapper main .collection-content{
+    display: grid;
+    width: 100%;
+    height: 100vh;
+    margin-left: 15em;
+
+    grid-template-columns: 1fr;
+    grid-row-gap: 1.2em;
+    grid-auto-rows: min-content;
+    overflow: auto;
+}
+
+.wrapper main .collection-content::after{
+    content: ' ';
+    margin-right:15em;
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+    opacity: 0.5;
+    background-image: url('../img/old.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+}
+
+.wrapper main .collection-content .collection-photos{
+    position: relative;
+    z-index: 2;
+    max-width: 85%; 
+    margin-right: auto;
+    margin-left: auto;
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    grid-auto-rows: max-content;
+    grid-row-gap: 2rem;
+}
+
+.wrapper main .collection-content .collection-photos .photo-item{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: max-content;
+    grid-row-gap: 1rem;
+}
+
+.wrapper main .collection-content .collection-photos .photo-item>img{
+    width: 85%;
+    height: 70;
+    border-radius: 30px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.wrapper main .collection-content .collection-title{
+    min-width: max-content;
+    position: relative;
+    z-index: 2;
+    margin-top: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: khaki;
+    border-radius: 60px;
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.wrapper main .collection-content .collection-element-title{
+    position: relative;
+    z-index: 2;
+    border: none;
+    border-bottom: 0.2rem solid black;
+    width: 70%;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    font-size: 1.3rem;
+    color: rgb(255, 255, 255);
+}
+
+.wrapper main .collection-content .collection-videos{
+    position: relative;
+    z-index: 2;
+    max-width: 85%; 
+    margin-right: auto;
+    margin-left: auto;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-auto-rows: max-content;
+    grid-row-gap: 2rem;
+}
+
+.wrapper main .collection-content .collection-videos .video-item{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: max-content;
+    grid-row-gap: 1rem;
+}
+
+.wrapper main .collection-content .collection-videos .video-item>img{
+    width: 85%;
+    height: 70;
+    border-radius: 30px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.wrapper main .collection-content .collection-memories{
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-rows: max-content;
+    justify-content: center;
+    grid-row-gap: 2rem;
+    grid-column-gap: 1rem;
+    padding-bottom: 4rem;
+}
+
+.wrapper main .collection-content .collection-memories .memory-item{
+    position: relative;
+    z-index: 2;
+    margin-left:auto;
+    margin-right: auto;
+    padding: 1rem;
+    width: 85%;
+    height: 8rem;
+    border-radius: 30px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: normal;
+    background-color: rgb(210, 180, 90);
+}
+
+.wrapper main .collection-content .collection-memories .memory-item::after{
+    bottom: 0;
+    z-index: 3;
+    left: 0;
+    content: ' ';
+    position: absolute;
+    width: 100%;
+    height: 4em;
+    background: linear-gradient(to bottom, rgba(240, 230, 140, 0), rgba(240, 230, 140, 1));
+}
 .wrapper main .sidebar .profile-pic{
     width: 5em;
     height: 5em;
@@ -99,6 +618,9 @@ span {
     border: 3px solid #FE0303;
     margin-top: 4em;
     margin-bottom: 4em;
+    background-image: url('../img/travel.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .wrapper main .sidebar .handle {
@@ -204,6 +726,8 @@ span {
     align-items: center;
     justify-content: center;
 }
+
+
 
 .bodycontainer {
     width: 100%;

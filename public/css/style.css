@@ -70,7 +70,6 @@ body footer {
     width: 100%;
     height: 100vh;
     z-index: 1;
-    opacity: 0.5;
     background-image: url('../img/camera.jpg');
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -189,7 +188,7 @@ body footer {
     overflow: auto;
 }
 
-.wrapper main .forum-content::before{
+.wrapper main .forum-content::after{
     content: ' ';
     margin-right:15em;
     position: absolute;
@@ -207,7 +206,7 @@ body footer {
 .wrapper main .forum-content .friends-news{
     display: block;
     width: 100%;
-    overflow: overlay;
+    overflow: auto;
     white-space: nowrap;
     z-index: 2;
     position: relative;
@@ -512,10 +511,15 @@ body footer {
 
 .wrapper main .collection-content .collection-photos .photo-item>img{
     width: 85%;
-    height: 70;
+    height: auto;
     border-radius: 30px;
     margin-right: auto;
     margin-left: auto;
+    transition: all ease-in-out 0.4s;
+}
+
+.wrapper main .collection-content .collection-photos .photo-item>img:hover{
+    transform: scale(1.1);
 }
 
 .wrapper main .collection-content .collection-title{
@@ -567,7 +571,7 @@ body footer {
 
 .wrapper main .collection-content .collection-videos .video-item>img{
     width: 85%;
-    height: 70;
+    height: auto;
     border-radius: 30px;
     margin-right: auto;
     margin-left: auto;
@@ -644,16 +648,12 @@ body footer {
     margin-bottom: 2em;
     border: 4px solid rgb(65, 65, 65);
     background-color: #ece9e9;
+    transition: all ease-in-out 0.5s;
 }
 
 .wrapper main .sidebar ul li:hover, .wrapper main .sidebar .exit:hover{
     border-color: rgb(226, 63, 63);
-    transition-duration: 0.5s;
-}
-
-.wrapper main .sidebar ul li a:hover, .wrapper main .sidebar .exit a:hover{
-    background-color: #f5cece;
-    transition-duration: 0.5s;
+    transform: scale(1.05);
 }
 
 .wrapper main .sidebar ul li a{
@@ -665,6 +665,7 @@ body footer {
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: all ease-in-out 0.5s;
 }
 
 .wrapper main .sidebar .head-sidebar-element > *{
@@ -714,6 +715,7 @@ body footer {
     height: 3vh;
     border: 4px solid rgb(65, 65, 65);
     background-color: #ece9e9;
+    transition: all ease-in-out 0.5s;
 }
 
 .wrapper main .sidebar .exit a {
@@ -725,6 +727,7 @@ body footer {
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: all ease-in-out 0.5s;
 }
 
 
@@ -833,4 +836,167 @@ input[type="text"], [type="password"] {
     grid-row: 7 / 9;
     justify-content: center;
     align-content: center;
+}
+
+.wrapper main .toggle{
+    display: none;
+}
+
+@media all and (max-width:1200px){
+
+    .wrapper main{
+        flex-direction: column;
+    }
+
+    .wrapper main .toggle{
+        display: flex;
+        position: fixed;
+        z-index: 3;
+        height: 5rem;
+        width: 100%;
+        background-color: black;
+        justify-content: center;
+        align-content: center;
+        color: white;
+        transition: all ease-in-out 1s;
+    }
+
+    .wrapper main .toggle:hover{
+        cursor: pointer;
+        background-color: #4E4E4E;
+    }
+
+    .wrapper main .sidebar{
+        transition: all ease-in-out 300ms;
+    }
+
+    .wrapper main #passive{
+        bottom: 0;
+        visibility: hidden;
+        left: -15rem;
+        z-index: 3;
+        justify-content: center;
+        transition: all ease-in-out 300ms;
+    }
+
+    .wrapper main #passive .exit{
+        position: initial;
+        margin: auto;
+    }
+
+    .wrapper main #passive .profile-pic{
+        display: none;
+    }
+
+    .wrapper main #passive .handle{
+        margin-top: auto;
+    }
+
+    .wrapper main #active{
+        width: 100vw;
+        height: calc(100vh - 5rem);
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        z-index: 3;
+        transition: all ease-in-out 300ms;
+    }
+
+    .wrapper main #active .handle{
+        margin-top: auto;
+        width: 10%;
+        height: 5%;
+        transition: all ease-in-out 0.5s;
+    }
+
+    .wrapper main #active .profile-pic{
+        display: none;
+    }
+
+    .wrapper main #active .exit{
+        margin: auto;
+        position: initial;
+        width: 30%;
+        height: 5%
+     }
+
+    .wrapper main #active ul li{
+        height: 5rem;
+    }
+
+    .wrapper main #active .wheels .wheel{
+        height: 3rem;
+        width: 3rem;
+        margin: 0 2rem 0 2rem;
+    }
+
+    .wrapper main .collection-content{
+        height: 100%;
+        grid-template-columns: 1fr;
+        margin-top: 5rem;
+        margin-left: 0;
+    }
+
+    .wrapper main .collection-content::after{
+        margin: 0;
+        height: 100%;
+    }
+
+    .wrapper main .collection-content .collection-photos{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .wrapper main .forum-content{
+        height: 100%;
+        grid-template-columns: 1fr;
+        margin-top: 5rem;
+        margin-left: 0;
+    }
+
+    .wrapper main .forum-content::after{
+        margin: 0;
+        height: 100%;
+    }
+
+    .wrapper main .profile-content{
+        height: 100vh;
+        grid-template-columns: 1fr;
+        margin-top: 5rem;
+        margin-left: 0;
+    }
+
+    .wrapper main .profile-content::after{
+        margin: 0;
+        height: 100%;
+    }
+
+    .wrapper main .profile-content .my-travelers-code-section{
+        padding-bottom: 3rem;
+    }
+
+    .wrapper main .settings-content{
+        height: 100%;
+        grid-template-columns: 1fr;
+        margin-top: 5rem;
+        margin-left: 0;
+    }
+
+    .wrapper main .settings-content::after{
+        margin: 0;
+        height: 100%;
+    }
+
+    .wrapper main .settings-content .settings{
+        padding-bottom: 5rem;
+    }
+
+    .wrapper main .settings-content .settings .settings-handle{
+        width: 10%;
+        height: 3rem;
+    }
+
+    .wrapper main .settings-content .settings .upper-part, .middle-part, .bottom-part{
+        max-width: 60%;
+    }
+
 }

@@ -35,7 +35,7 @@
                             }
                         }
                         ?>
-                    </div>>
+                    </div>
                     <input name="email" type="text" placeholder="user email">
                     <input name="password" type="password" placeholder="user password">
                     <button type="submit">LOG IN</button>

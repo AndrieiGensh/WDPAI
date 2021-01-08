@@ -19,6 +19,6 @@ class UserDAO extends DAO
             return null;
         }
 
-        return new User($user['email'], $user['password'], $user['name'], $user['surname']);
+        return new User($user['id'], $user['email'], $user['password'], $user['name'], $user['surname']);
     }
 }

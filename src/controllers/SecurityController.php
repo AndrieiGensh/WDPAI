@@ -6,11 +6,18 @@ require_once __DIR__.'/../DAO/UserDAO.php';
 
 class SecurityController extends AppController
 {
+
     public function login()
     {
+        if(isset($_COOKIE["user_id"]))
+        {
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/profile");
+        }
+
         $userDao = new UserDAO();
 
-        if($this->isPOST())
+        if(!$this->isPOST())
         {
             return $this->render('login');
         }
@@ -30,6 +37,7 @@ class SecurityController extends AppController
             return $this->render("login", ["messages" => ["Wrong password was provided"]]);
         }
 
+        setcookie("user_id", $user->getUserId(), time() + 3600);
 
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/profile");

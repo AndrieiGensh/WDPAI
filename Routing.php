@@ -18,13 +18,15 @@ class Routing
 
         if(!array_key_exists($action, self::$routes))
         {
-            die("Wrong url was provided!");
+            die("Wrong url");
         }
 
         $controller_name = self::$routes[$action];
         $actual_controller = new $controller_name();
 
-        $action = $action ?: 'index';
+
+        $init = '_init';
+        $action = ($action === '') ? 'login' : $action;
 
         $actual_controller->$action();
     }

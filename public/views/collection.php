@@ -3,6 +3,7 @@
     <link rel="stylesheet" type="text/css" href="public/css/style.css?<?php echo time() ?>"/>
     <title>COLLECTION</title>
     <script src="https://kit.fontawesome.com/d9f59e1a3c.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./public/js/menutoggle.js" defer></script>
 </head>
 
 <body>
@@ -18,8 +19,11 @@
         </header>
 
         <main>
+            <div class="toggle">
 
-            <div class="sidebar">
+            </div>
+
+            <div class="sidebar" id="passive">
 
                 <div class="profile-pic">
 

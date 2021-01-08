@@ -5,7 +5,7 @@ class AppController
 
     private $requestType;
 
-    public function __constructor()
+    public function __construct()
     {
         $this->requestType = $_SERVER['REQUEST_METHOD'];
     }

@@ -14,19 +14,19 @@
         </div>
         <div class="container">
             <div class="signup">
-                <form>
-                    <input name="username" type="text" placeholder="user name">
-                    <input name="email" type="text" placeholder="user email">
-                    <input name="password" type="password" placeholder="user password">
-                    <input name="commitpassword" type="password" placeholder="commit password">
-                    <button>SIGN UP</button>
+                <form class="register-form" method="post">
+                    <input class="login-register-input" name="username" type="text" placeholder="user name">
+                    <input class="login-register-input" name="email" type="text" placeholder="user email">
+                    <input class="login-register-input" name="password" type="password" placeholder="user password">
+                    <input class="login-register-input" name="commitpassword" type="password" placeholder="commit password">
+                    <button type="submit">SIGN UP</button>
                 </form>
             </div>
             <div class="OR">
                 OR
             </div>
             <div class="login">
-                <form action="login" method="post">
+                <form class="login-form" action="login" method="post">
                     <div class = "message">
                         <?php
                         if(isset($messages)) {
@@ -36,8 +36,8 @@
                         }
                         ?>
                     </div>
-                    <input name="email" type="text" placeholder="user email">
-                    <input name="password" type="password" placeholder="user password">
+                    <input class="login-register-input" name="email" type="text" placeholder="user email">
+                    <input class="login-register-input" name="password" type="password" placeholder="user password">
                     <button type="submit">LOG IN</button>
                 </form>
             </div>

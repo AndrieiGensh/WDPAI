@@ -2,8 +2,11 @@
 <head>
     <link rel="stylesheet" type="text/css" href="public/css/style.css?<?php echo time() ?>"/>
     <title>COLLECTION</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
     <script src="https://kit.fontawesome.com/d9f59e1a3c.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="./public/js/menutoggle.js" defer></script>
+    <script type="text/javascript" src="./public/js/toggleSubmitButton.js" defer></script>
+    <script type="text/javascript" src="./public/js/collectionUpload.js" defer></script>
 </head>
 
 <body>
@@ -128,6 +131,13 @@
                         <div class="collection-element-title">
                             Photo.jpg
                         </div>
+                    </div>
+
+                    <div class="add-photo-form">
+                        <form class="add-photo" method="post" name="UploadForm" enctype="multipart/form-data">
+                            <input class="select-photo" type="file" name="photo-image"/>
+                            <input class="select-photo-title" type="text" name="photo-title">
+                            <button class="submit-button" type="submit" name="submit-photo" disabled>SUBMIT</button>
                     </div>
                 </section>
 
@@ -267,5 +277,15 @@
     <footer>
 
     </footer>
+
+    <script>
+        const photoElement = document.querySelector(".photo-item");
+        photoElement.addEventListener("click", function(){hide(photoElement); });
+
+        function hide(elem)
+        {
+            elem.style.visibility = "hidden";
+        }
+    </script>
 
 </body>

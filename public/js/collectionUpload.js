@@ -14,7 +14,7 @@ $(document).ready(function() {
         alert("file title = " + file_title);
         ajaxRequest = $.ajax(
             {
-                url: './src/controllers/CollectionController.php',
+                url: './src/handlers/UploadHandler.php',
                 type: "post",
                 data: form_data,
                 processData: false,
@@ -27,11 +27,36 @@ $(document).ready(function() {
             if(result["success"] == "true")
             {
                 alert("Successfully added photo. Still needs to be checked though ...");
+                var titleDiv = document.createElement('div');
+                titleDiv.className = 'collection-element-title';
+                titleDiv.innerHTML = file_title;
+
+                var photoImg = document.createElement('img');
+                photoImg.src = 'public/uploads/'+file_data.name;
+
+                var photoItemDiv = document.createElement('div');
+                photoItemDiv.classList.add('photo-item');
+                photoItemDiv.appendChild(photoImg);
+                photoItemDiv.appendChild(titleDiv);
+
+                var uploadForm = document.querySelector('.add-photo-form');
+                uploadForm.parentNode.insertBefore(photoItemDiv, uploadForm);
+
             }
             else
             {
                 alert("Adding failed due to " + result["error"]);
             }
         });
+        ajaxRequest.fail(function( result, jqXHR, textStatus){
+            alert("failed due to " + textStatus + " " + jqXHR);
+        });
+
+        ajaxRequest.always(function(){
+            alert("completed");
+            $(".select-photo").val(null);
+            $(".select-photo-title").val(null);
+        });
     });
-})
+
+});

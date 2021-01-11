@@ -12,3 +12,9 @@ titleField.addEventListener("keyup", function() {
         document.querySelector(".submit-button").disabled = true;
     }
 });
+
+let realFileInput = document.querySelector(".select-photo");
+let fileInputReplacement = document.querySelector(".replacement");
+fileInputReplacement.addEventListener("click", function(){
+    $(".select-photo").trigger("click");
+});

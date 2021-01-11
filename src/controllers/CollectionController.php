@@ -27,13 +27,15 @@ class CollectionController extends AppController
     {
         if(isset($_COOKIE["user_id"]))
         {
-            echo("user is set");
             $user_photos = $this->photoDAO->getAllPhotosOfThisUser($_COOKIE["user_id"]);
-            echo(count($user_photos));
             $user_videos = $this->videoDAO->getAllVideosOfThisUser($_COOKIE["user_id"]);
             $user_memories = $this->memoriesDAO->getAllMemoriesOfThisUser($_COOKIE["user_id"]);
 
             $this->render("collection", ["photos" => $user_photos, "videos" => $user_videos, "memories" => $user_memories]);
+        }
+        else
+        {
+            $this->render("login", ["messages" => ["You need to login first"]]);
         }
     }
 
@@ -158,6 +160,3 @@ class CollectionController extends AppController
     }
 
 }
-
-$controller = new CollectionController();
-$controller->distinguishActionRequest();

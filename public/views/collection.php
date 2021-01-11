@@ -6,7 +6,7 @@
     <script src="https://kit.fontawesome.com/d9f59e1a3c.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="./public/js/menutoggle.js" defer></script>
     <script type="text/javascript" src="./public/js/toggleSubmitButton.js" defer></script>
-    <script type="text/javascript" src="./public/js/collectionUpload.js" defer></script>
+    <script type="text/javascript" src="./public/js/fetchCollectionUpload.js" defer></script>
 </head>
 
 <body>
@@ -84,58 +84,21 @@
                 </div>
 
                 <section class="collection-photos">
+                    <?php foreach($photos as $photo): ?>
                     <div class="photo-item">
-                        <img src="public/img/mountains.jpg">
+                        <img src="public/uploads/<?= $photo->getPhotoName()?>">
                         <div class="collection-element-title">
-                            Photo.jpg
+                            <?= $photo->getPhotoName()?>
                         </div>
                     </div>
-                    <div class="photo-item">
-                        <img src="public/img/mountains.jpg">
-                        <div class="collection-element-title">
-                            Photo.jpg
-                        </div>
-                    </div>
-                    <div class="photo-item">
-                        <img src="public/img/mountains.jpg">
-                        <div class="collection-element-title">
-                            Photo.jpg
-                        </div>
-                    </div>
-                    <div class="photo-item">
-                        <img src="public/img/mountains.jpg">
-                        <div class="collection-element-title">
-                            Photo.jpg
-                        </div>
-                    </div>
-                    <div class="photo-item">
-                        <img src="public/img/mountains.jpg">
-                        <div class="collection-element-title">
-                            Photo.jpg
-                        </div>
-                    </div>
-                    <div class="photo-item">
-                        <img src="public/img/mountains.jpg">
-                        <div class="collection-element-title">
-                            Photo.jpg
-                        </div>
-                    </div>
-                    <div class="photo-item">
-                        <img src="public/img/mountains.jpg">
-                        <div class="collection-element-title">
-                            Photo.jpg
-                        </div>
-                    </div>
-                    <div class="photo-item">
-                        <img src="public/img/mountains.jpg">
-                        <div class="collection-element-title">
-                            Photo.jpg
-                        </div>
-                    </div>
+                    <?php endforeach; ?>
 
                     <div class="add-photo-form">
                         <form class="add-photo" method="post" name="UploadForm" enctype="multipart/form-data">
                             <input class="select-photo" type="file" name="photo-image"/>
+                            <div class="replacement">
+                                <i class="fa fa-plus-circle fa-3x" aria-hidden="true"></i>
+                            </div>
                             <input class="select-photo-title" type="text" name="photo-title">
                             <button class="submit-button" type="submit" name="submit-photo" disabled>SUBMIT</button>
                     </div>

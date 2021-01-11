@@ -53,6 +53,87 @@ body footer {
     background-image: url('../img/leaves-5643327_1920.png');
 }
 
+.wrapper main .registration-form-div{
+    width: 100vw;
+    height: 100vh;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center
+}
+
+.wrapper main .registration-form-div:after{
+    content: " ";
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    margin: auto;
+    background-image: url('../img/dark-blue-sky-4243583_1920.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    opacity: 0.4;
+    z-index: 1;
+}
+
+.wrapper main .registration-form-div .registration-form{
+    position: relative;
+    z-index: 2;
+    width: 50%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin-top: 0;
+    border-radius: 30px;
+    border: 4px solid #966262;
+    background-color: #2b2121;
+}
+
+.wrapper main .registration-form-div .registration-form .message{
+    position: relative;
+    z-index: 2;
+    width: 85%;
+    height: 2rem;
+    margin: auto;
+    font-size: initial;
+    text-align: center;
+}
+
+.wrapper main .registration-form-div .registration-form input{
+    width: 85%;
+    height: 3rem;
+    margin-bottom: 1.8rem;
+    border: none;
+    font-size: inherit;
+}
+
+.wrapper main .registration-form-div .registration-form .button-holder{
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 2rem;
+    width: 90%;
+}
+
+.wrapper main .registration-form-div .registration-form .button-holder .submit-registration-btn{
+    width: 70%;
+    height: 2rem;
+    border-radius: 30px;
+    margin: auto;
+    background-color: cadetblue;
+}
+
+.wrapper main .registration-form-div .registration-form .button-holder .cancel-registration-btn{
+    width: 70%;
+    height: 2rem;
+    border-radius: 30px;
+    margin: auto;
+    background-color: chocolate;
+}
+
 .wrapper main .settings-content{
     display: grid;
     width: 100%;
@@ -511,7 +592,7 @@ body footer {
 
 .wrapper main .collection-content .collection-photos .photo-item>img{
     width: 85%;
-    height: auto;
+    height: 12rem;
     border-radius: 30px;
     margin-right: auto;
     margin-left: auto;
@@ -548,8 +629,7 @@ body footer {
     border-radius: 30px;
     margin: auto;
     background-color: gray;
-    content: none;
-    opacity: 0;
+    display: none;
 }
 
 .wrapper main .collection-content .collection-photos .add-photo-form .add-photo > .select-photo:hover{
@@ -561,6 +641,26 @@ body footer {
     margin: auto;
 }
 
+.wrapper main .collection-content .collection-photos .add-photo-form .add-photo .replacement{
+    height: 10rem;
+    width: 85%;
+    border-radius: 30px;
+    margin: auto;
+    background-color: gray;
+    display: flex;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+.wrapper main .collection-content .collection-photos .add-photo-form .add-photo .replacement:hover{
+    cursor: pointer;
+
+}
+
+.wrapper main .collection-content .collection-photos .add-photo-form .add-photo .replacement .fa-plus-circle{
+    margin: auto;
+    z-index: 6;
+}
 
 .wrapper main .collection-content .collection-title{
     min-width: max-content;
@@ -587,6 +687,8 @@ body footer {
     margin-left: auto;
     text-align: center;
     font-size: 1.3rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
     color: rgb(255, 255, 255);
 }
 
@@ -673,7 +775,17 @@ body footer {
     border: 6px solid #4E4E4E;
     background-color: #2c2c2c;
     clip-path: polygon( 0% 0%, 100% 0%, 100% 100%, 70% 100%, 70% 40%, 30% 40%, 30% 100%, 0% 100%);
+}
 
+.wrapper main #registration-handle{
+    position: relative;
+    z-index: 2;
+    margin: auto auto 2rem auto;
+    width: 15%;
+    height: 5%;
+    background-color: #2b2121;
+    border: 4px solid #966262;
+    clip-path: polygon( 0% 0%, 100% 0%, 100% 100%, 70% 100%, 70% 40%, 30% 40%, 30% 100%, 0% 100%);
 }
 
 .wrapper main .sidebar ul {

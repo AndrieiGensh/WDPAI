@@ -19,24 +19,26 @@ class ProfileDataDAO extends DAO
         $statement->bindParam(":user_id", $user_id, PDO::PARAM_INT);
         $statement->execute();
 
-        $profile_info = $statement->fetchAll();
+        $profile_info = $statement->fetch(PDO::FETCH_ASSOC);
 
-        return $profile_info;
+        return ['code' => $profile_info["travellers_code"], 'about_me' => $profile_info["about_me"]];
     }
 
     public function getPersonalDataOfThisUser(int $user_id) :? array
     {
-        $statement = $this->connection->prepare("SELECT us_d.name, us_d.surname FROM public.users AS us 
-                    INNER JOIN public.user_details AS us_d ON us.user_details = us_d.id WHERE us.id = :user_id");
+        $statement = $this->connection->prepare("SELECT us_d.name, us_d.surname FROM public.users AS u_s 
+                    INNER JOIN public.user_details AS us_d ON u_s.user_details = us_d.id WHERE u_s.id = :user_id");
         $statement->bindParam(":user_id", $user_id, PDO::PARAM_INT);
         $statement->execute();
 
-        $user_details = $statement->fetchAll();
+        $user_details = $statement->fetch(PDO::FETCH_ASSOC);
 
         $user_name = $user_details["name"];
         $user_surname = $user_details["surname"];
 
-        return ["name" => $user_name, "surname" => $user_surname];
+        $result = ["name" => $user_name, "surname" => $user_surname];
+        
+        return $result;
     }
 
     public function updateProfileDataOfThisUser(int $user_id) : bool

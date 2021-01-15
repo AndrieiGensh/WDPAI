@@ -6,9 +6,9 @@ $path = trim($_SERVER['REQUEST_URI'], '/');
 $path = parse_url($path, PHP_URL_PATH);
 
 Routing::set('login', 'SecurityController');
-Routing::set('registration', 'DefaultController');
+Routing::set('registration', 'RegistrationController');
 Routing::set('', 'SecurityController');
-Routing::set('profile', 'DefaultController');
+Routing::set('profile', 'ProfileController');
 Routing::set('forum', 'DefaultController');
 Routing::set('collection', 'CollectionController');
 Routing::set('settings', 'DefaultController');

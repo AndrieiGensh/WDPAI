@@ -4,6 +4,7 @@
     <title>PROFILE</title>
     <script src="https://kit.fontawesome.com/d9f59e1a3c.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="./public/js/menutoggle.js" defer></script>
+    <script type="text/javascript" src="./public/js/profileInfoEditing.js" defer></script>
 </head>
 
 <body>
@@ -75,22 +76,26 @@
                     <div class="profile-image">
 
                     </div>
-                    <h2> Name of the person</h2>
+                    <h2> <?php echo $name.$surname?></h2>
                     <div class="underline">
 
                     </div>
                 </div>
                 <div class="about-me-section">
                     <div class="about-me">
-                        About me
+                        About Me
                     </div>
 
                     <div class="text-bubble">
-                        <div>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur Excepteur sint
-                        occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. .
+                        <div class="const-about-me">
+                            <?php echo $about_me?>
+                        </div>
+                        <textarea class="editable-about-me" id="hidden">
+                        </textarea>
+                        <div class="profile-editing-buttons-section">
+                            <button class="edit-about-me"></button>
+                            <button class="submit-edit-about-me" id="hidden"></button>
+                            <button class="cancel-edit-about-me" id="hidden"></button>
                         </div>
                     </div>
 
@@ -101,16 +106,11 @@
                     </div>
 
                     <div class="text-bubble">
-                        <div>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur Excepteur sint
-                            occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. .
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur Excepteur sint
-                            occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. .
+                        <div class="const-code">
+                            <?php echo $code?>
                         </div>
+                        <textarea class="editable-code" id="hidden">
+                        </textarea>
                     </div>
                 </div>
             </div>

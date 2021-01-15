@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <head>
     <link rel="stylesheet" type="text/css" href="public/css/style.css?<?php echo time() ?>"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
+    <script src="https://kit.fontawesome.com/d9f59e1a3c.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./public/js/registrationValidation.js" defer></script>
     <title>REGISTRATION</title>
 </head>
 

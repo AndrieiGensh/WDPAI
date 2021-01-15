@@ -3,6 +3,8 @@
 require_once 'src/controllers/DefaultController.php';
 require_once 'src/controllers/SecurityController.php';
 require_once 'src/controllers/CollectionController.php';
+require_once 'src/controllers/ProfileController.php';
+require_once 'src/controllers/RegistrationController.php';
 
 class Routing 
 {
@@ -25,8 +27,6 @@ class Routing
         $controller_name = self::$routes[$action];
         $actual_controller = new $controller_name();
 
-
-        $init = '_init';
         $action = ($action === '') ? 'login' : $action;
 
         $actual_controller->$action();

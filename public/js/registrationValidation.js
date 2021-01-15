@@ -3,7 +3,7 @@ const registrationForm = document.querySelector(".registration-form");
 const userNameField = registrationForm.querySelector('input[name="new_user_name"]');
 const userSurnameField = registrationForm.querySelector('input[name="new_user_surname"]');
 const userPasswordField = registrationForm.querySelector('input[name="new_user_password"]');
-const userPasswordConfirm = registrationForm.querySelector('input[name="new_user_password_rpeat"]');
+const userPasswordConfirm = registrationForm.querySelector('input[name="new_user_password_repeat"]');
 const userEmailField = registrationForm.querySelector('input[name="new_user_email"]');
 
 const messageField = document.querySelector(".message");
@@ -62,13 +62,14 @@ userPasswordConfirm.addEventListener("change", function (){
 
 userEmailField.addEventListener("change", function (){
     setTimeout(function(){
+        alert(userEmailField.value);
         if(/\S+@\S+\.\S+/.test(userEmailField.value))
         {
-            userEmailField.id = "not-valid";
+            userEmailField.id = "valid";
         }
         else
         {
-            userEmailField.id = "valid";
+            userEmailField.id = "not-valid";
         }
     }, 1000);
 });
@@ -99,8 +100,11 @@ submitButton.addEventListener("click", function(event){
         validFields += 1;
     }
 
+    alert(validFields);
+
     if(validFields === 5)
     {
+        alert("All fields are valid");
         const formData = new FormData();
         formData.append("action", "addNewUser");
         formData.append("name", userNameField.value);
@@ -108,14 +112,14 @@ submitButton.addEventListener("click", function(event){
         formData.append("email", userEmailField.value);
         formData.append("password", userPasswordField.value);
 
-        const handlerUrl = './src/handlers/UserRegistrationHandler.php';
+        const handlerUrl = './src/handlers/RegistrationHandler.php';
 
         const request = new Request(handlerUrl, {
             method: 'POST',
             body: formData,
             headers: new Headers()
         });
-
+        alert("Sending adding request");
         fetch(request)
             .then((result) => result.json())
             .then(function(data){
@@ -126,17 +130,30 @@ submitButton.addEventListener("click", function(event){
 
                     const actionRequest = new FormData();
                     actionRequest.append("action", "redirectNewUser");
+                    actionRequest.append('created_user_email', userEmailField.value);
 
                     const successRequest = new Request(handlerUrl, {
                         method: 'POST',
                         body: actionRequest,
                         headers: new Headers()
                     });
-
+                    alert("Sending redirection request");
                     fetch(successRequest)
-                        .then((response) => response.json())
+                        .then(function(response) {
+                            return response.json();
+                        })
                         .then(function(answer){
-                            alert(answer);
+                            if(answer.success === 'true')
+                            {
+                                let now = new Date();
+                                let time = now.getTime();
+                                time += 3600 * 1000;
+                                now.setTime(time);
+                                alert('url = ' + answer.url);
+                                alert('user id' + answer.user_id);
+                                document.cookie = "user_id=" + answer.user_id + '; expires' + now.toUTCString() + '; path=/';
+                                window.location.replace(answer.url);
+                            }
                         });
                 }
                 else
@@ -152,4 +169,44 @@ submitButton.addEventListener("click", function(event){
                 }
             });
     }
+});
+
+const cancelButton = document.querySelector(".cancel-registration-btn");
+cancelButton.addEventListener("click", function(event){
+    event.preventDefault();
+    const handlerUrl = './src/handlers/RegistrationHandler.php';
+    alert("inside the cancel bytton");
+    const actionForm = new FormData();
+    actionForm.append("action", "getUrlForCancelButton");
+    const cancelRequest = new Request(handlerUrl, {
+        method: 'POST',
+        body: actionForm,
+        headers: new Headers()
+    });
+
+    alert("BEfore fetch");
+
+    fetch(cancelRequest)
+        .then(function(responde){
+            alert("in first then");
+            return responde.json();
+        })
+        .then(function(data){
+            alert(data);
+            alert("URL = " + data.url);
+            if(data.success === 'true')
+            {
+                alert("Success");
+                document.cookie = "user_id = ; expires = Thu, 01 Jan 1970 00:00:00 GMT; path=/";
+                window.location.replace(data.url);
+            }
+            else
+            {
+                alert("Could not retrieve url from the controller");
+            }
+        })
+        .catch((error) => {
+            alert('Error');
+            console.log(error);
+        })
 });

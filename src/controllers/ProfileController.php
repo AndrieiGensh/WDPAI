@@ -20,13 +20,12 @@ class ProfileController extends AppController
             $profile_data = $this->profileDAO->getProfileDataOfThisUser($_COOKIE["user_id"]);
             $personal_data = $this->profileDAO->getPersonalDataOfThisUser($_COOKIE["user_id"]);
 
-            $this->render("profile", ["personal_data" => $personal_data, "profile_data" => $profile_data,
-                "messages" => ""]);
+            $result = ["name" => $personal_data["name"], "surname" => $personal_data['surname'],
+                "about_me" => $profile_data['about_me'], 'code' => $profile_data['code'], "messages" => "bla"];
+            $this->render("profile", $result);
         }
         else{
             $this->render("login", ["messages" => "Ypu need to login first"]);
         }
     }
-
-
 }

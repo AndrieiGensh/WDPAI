@@ -525,6 +525,7 @@ body footer {
 }
 
 .wrapper main .profile-content .text-bubble{
+    display: grid;
     z-index: 2;
     position: relative;
     width: 85%;
@@ -538,11 +539,34 @@ body footer {
     margin-top: 1em;
 }
 
-.wrapper main .profile-content .text-bubble>div{
+.const-about-me, .const-code{
     padding-left: 1.5em;
     padding-right: 1.5em;
     padding-top:1.5em;
     padding-bottom: 1.5em;
+}
+
+.profile-editing-buttons-section{
+    display: flex;
+    flex-direction: row;
+    height: 1.5rem;
+    width: 5rem;
+    bottom: 0;
+    left: 0;
+    padding: 0;
+    margin-left: auto;
+}
+
+.profile-editing-buttons-section .edit-about-me{
+    background-color: blue;
+}
+
+.profile-editing-buttons-section > .submit-edit-about-me{
+    background-color: green;
+}
+
+.profile-editing-buttons-section > .cancel-edit-about-me{
+    background-color: red;
 }
 
 .wrapper main .collection-content{
@@ -991,6 +1015,18 @@ body footer {
 }
 
 .wrapper main .toggle{
+    display: none;
+}
+
+#valid{
+    border: solid 4px limegreen;
+}
+
+#not-valid{
+    border: solid 4px red;
+}
+
+#hidden{
     display: none;
 }
 

@@ -1,0 +1,1691 @@
+body {
+    margin: 0; 
+    background-color: rgb(15, 15, 15);
+}
+
+span {
+    margin-left: 0.5em;
+}
+
+.wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+::-webkit-scrollbar{
+    width: 0.5rem;
+    max-height: 0.3rem;
+}
+
+::-webkit-scrollbar-thumb{
+    background: #f6f6f6;
+}
+
+body footer {
+    z-index: 2;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2em;
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+
+.wrapper main {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    position: relative;
+}
+
+.wrapper main .sidebar {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    width: 15em;
+    height: 100%;
+    align-items: center;
+    background-size: cover;
+    background-image: url('../img/leaves-5643327_1920.png');
+}
+
+.wrapper main .registration-form-div{
+    width: 100vw;
+    height: 100vh;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center
+}
+
+.wrapper main .registration-form-div:after{
+    content: " ";
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    margin: auto;
+    background-image: url('../img/dark-blue-sky-4243583_1920.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    opacity: 0.4;
+    z-index: 1;
+}
+
+.wrapper main .registration-form-div .registration-form{
+    position: relative;
+    z-index: 2;
+    width: 50%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin-top: 0;
+    border-radius: 30px;
+    border: 4px solid #966262;
+    background-color: #2b2121;
+}
+
+.wrapper main .registration-form-div .registration-form .message{
+    position: relative;
+    z-index: 2;
+    width: 85%;
+    height: 2rem;
+    margin: auto;
+    font-size: initial;
+    text-align: center;
+}
+
+.wrapper main .registration-form-div .registration-form input{
+    width: 85%;
+    height: 3rem;
+    margin-bottom: 1.8rem;
+    border: none;
+    font-size: inherit;
+}
+
+.wrapper main .registration-form-div .registration-form .button-holder{
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 2rem;
+    width: 90%;
+}
+
+.wrapper main .registration-form-div .registration-form .button-holder .submit-registration-btn{
+    width: 70%;
+    height: 2rem;
+    border-radius: 30px;
+    margin: auto;
+    background-color: cadetblue;
+}
+
+.wrapper main .registration-form-div .registration-form .button-holder .cancel-registration-btn{
+    width: 70%;
+    height: 2rem;
+    border-radius: 30px;
+    margin: auto;
+    background-color: chocolate;
+}
+
+.wrapper main .settings-content{
+    display: grid;
+    width: 100%;
+    height: 100vh;
+    margin-left: 15em;
+    grid-template-columns: 1fr 1fr;
+    grid-row-gap: 1.2em;
+    overflow: auto;
+}
+
+.wrapper main .settings-content::after{
+    content: ' ';
+    margin-right:15em;
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+    background-image: url('../img/camera.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    opacity: 50%;
+    background-attachment: fixed;
+}
+
+.wrapper main .settings-content .settings{
+    display: grid;
+    z-index: 2;
+    justify-content: center;
+    align-content: center;
+    grid-template-columns: 1fr;
+    position: relative;
+    grid-auto-rows: max-content;
+    grid-row-gap: 2rem;
+}
+
+.wrapper main .settings-content .settings .settings-handle{
+    width: 10rem;
+    height: 5rem;
+    background-color: #EFD09A;
+    border: 0.2rem solid #707070;
+    clip-path: polygon( 0% 0%, 100% 0%, 100% 100%, 80% 100%, 80% 35%, 20% 35%, 20% 100%, 0% 100%);
+    z-index: 2;
+    position: relative;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.wrapper main .settings-content .settings .upper-part{
+    width: 85%;
+    min-height: 10rem;
+    border-radius: 60px 60px 0px 0px;
+    background-color: #EFD09A;
+    border: 0.2rem solid #707070;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.wrapper main .settings-content .settings .middle-part{
+    width: 85%;
+    min-height: 8rem;
+    border-radius: 0;
+    background-color: #EFD09A;
+    border: 0.2rem solid #707070;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.wrapper main .settings-content .settings .bottom-part{
+    width: 85%;
+    min-height: 10rem;
+    border-radius: 0px 0px 60px 60px;
+    background-color: #EFD09A;
+    border: 0.2rem solid #707070;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.wrapper main .settings-content .settings .settings-buttons{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 2rem;
+}
+
+.wrapper main .settings-content .settings .settings-buttons>.save-settings,.default-settings{
+    min-width: 70%;
+    height: 3rem;
+    border-radius: 60px 60px 60px 60px;
+    background-color: #EFD09A;
+    border: 0.2rem solid #707070;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.wrapper main .settings-content .settings .settings-buttons>.save-settings:hover,.default-settings:hover{
+    transform: scale(1.1);
+    transition-duration: 0.5s;
+    border-color: black;
+}
+
+.wrapper main .settings-content .settings .setting-header{
+    position: relative;
+    z-index: 2;
+    top: 0;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.wrapper main .settings-content .settings .setting-header>h4{
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.wrapper main .settings-content .settings .setting-header .setting-header-underline{
+    max-width: 80%;
+    height: 0.05rem;
+    background-color: black;
+    position: relative;
+    z-index: 2;
+    align-self: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.wrapper main .settings-content .settings .delete-account{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.wrapper main .settings-content .settings .delete-account .delete-account-button{
+    background-color: red;
+    text-align: center;
+    border-radius: 30px;
+}
+
+.wrapper main .settings-content .settings .delete-account>*
+{
+    margin: 10%  1rem 2rem ;
+}
+
+
+.wrapper main .forum-content{
+    display: grid;
+    width: 100%;
+    height: 100vh;
+    margin-left: 15em;
+    grid-template-columns: 1fr;
+    grid-auto-rows: max-content;
+    grid-row-gap: 1.2em;
+    overflow: auto;
+}
+
+.wrapper main .forum-content::after{
+    content: ' ';
+    margin-right:15em;
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+    opacity: 0.5;
+    background-image: url('../img/typewriter.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    opacity: 50%;
+    background-attachment: fixed;
+}
+
+.wrapper main .forum-content .friends-news{
+    display: block;
+    width: 100%;
+    overflow: auto;
+    white-space: nowrap;
+    z-index: 2;
+    position: relative;
+}
+
+.wrapper main .forum-content .friends-news::-webkit-scrollbar{
+    width: 0;
+    height: 0;
+}
+
+.wrapper main .forum-content .friend-icon{
+    display: inline-block;
+    min-width: 4em;
+    min-height: 4em;
+    max-height: 4em;
+    border-radius: 50%;
+    background-color: white;
+    border: 3px solid #FE0303;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin: 1em;
+    z-index: 2;
+    position: relative;
+    background-image: url('../img/travel.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.wrapper main .forum-content .horizontal-underline{
+    width: 80%;
+    height: 0.3em;
+    background-color: rgb(203, 183, 183);
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 2;
+    position: relative;
+}
+
+.wrapper main .forum-content .general-news{
+    display: flex;
+    flex-direction: row;
+    z-index: 2;
+    position: relative;
+}
+
+.wrapper main .forum-content .general-news .news-artickle{
+    height: 10em;
+    background-color: #EFD09A;
+    z-index: 2;
+    position: relative;
+    width: 85%;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    text-align: center;
+    margin-top: 1rem;
+    padding: 1rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: normal;
+}
+
+.wrapper main .forum-content .general-news .news-artickle::after{
+    top: 8em;
+    left: 0;
+    content: ' ';
+    position: absolute;
+    width: 100%;
+    height: 4em;
+    background: linear-gradient(to bottom, rgba(240, 230, 140, 0), rgba(240, 230, 140, 1));
+}
+
+.wrapper main .forum-content .friends-posts{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: max-content;
+    grid-row-gap: 1em;
+    position: relative;
+    z-index: 2;
+    overflow: visible;
+    padding-bottom: 3em;
+}
+
+.wrapper main .forum-content .friends-posts .post{
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    position: relative;
+    z-index: 2;
+}
+
+.wrapper main .forum-content .friends-posts .post .post-content{
+    height: auto;
+    background-color: khaki;
+    z-index: 2;
+    position: relative;
+    max-width: 85%;
+    margin-left: 1em;
+    margin-right: 1em;
+    text-align: center;
+    font-size: 1.2em;
+    border-radius: 30px;
+    margin-top: 1em;
+    padding: 1em;
+    padding-bottom: 0;
+    padding-top: 1rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: normal;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper main .forum-content .friends-posts .post .post-content .date{
+    position: relative;
+    width: auto;
+    bottom: 0;
+    right: 2em;
+    margin-left: auto;
+    font-size: 0.8em;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.wrapper main .profile-content{
+    display: grid;
+    width: 100%;
+    height: 100vh;
+    margin-left: 15em;
+
+    grid-template-columns: 1fr;
+    grid-row-gap: 1.2em;
+    grid-auto-rows: min-content;
+}
+
+.wrapper main .profile-content::after{
+    content: ' ';
+    margin-right:15em;
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+    opacity: 0.5;
+    background-image: url('../img/travel.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+}
+
+.wrapper main .profile-content .profile-head {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    z-index: 2;
+    position: relative;
+}
+
+.wrapper main .profile-content .profile-head .profile-image{
+    width: 6em;
+    height: 6em;
+    border-radius: 50%;
+    background-color: white;
+    border: 3px solid #FE0303;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 2;
+    position: relative;
+    background-image: url('../img/travel.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.wrapper main .profile-content .profile-head h2{
+    padding: 0;
+    margin: 0;
+    z-index: 2;
+    position: relative;
+    color: white;
+}
+
+.wrapper main .profile-content .profile-head .underline{
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: 0.2em;
+    background-color: black;
+    margin-top: 0%;
+    padding: 0%;
+    z-index: 2;
+    position: relative;
+}
+
+.wrapper main .profile-content .about-me-section{
+    z-index: 2;
+}
+
+.wrapper main .profile-content .about-me-section .about-me{
+    margin-left: 0%;
+    width: 30%;
+    height: 2.5em;
+    background-color: rgb(222, 198, 198);
+    z-index: 2;
+    border-radius: 0 30px 30px 0;
+    text-align: center;
+    font-size: 1.2em;
+    padding-top: 1em;
+}
+
+.wrapper main .profile-content .my-travelers-code-section{
+    z-index: 2;
+}
+
+.wrapper main .profile-content .my-travelers-code-section .travelers-code{
+    margin-left: 0%;
+    width: 40%;
+    height: 2.5em;
+    background-color: rgb(222, 198, 198);
+    z-index: 2;
+    border-radius: 0 30px 30px 0;
+    text-align: center;
+    padding-bottom: 0.5em;
+    padding-top: 0.5em;
+    
+}
+
+.wrapper main .profile-content .my-travelers-code-section .travelers-code .h3{
+    font-size: 1.2em;
+    position: relative;
+}
+
+.wrapper main .profile-content .text-bubble{
+    display: grid;
+    z-index: 2;
+    position: relative;
+    width: 85%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.2em;
+    background-color: khaki;
+    border-radius: 30px;
+    text-align: center;
+    margin-top: 1em;
+}
+
+.text-bubble textarea{
+    margin-bottom: 1rem;
+}
+
+.const-info{
+    padding: 1rem;
+    border-bottom: solid 1px gray;
+    margin-bottom: 0.5rem;
+}
+
+.profile-editing-buttons-section{
+    display: flex;
+    flex-direction: row;
+    height: 1.5rem;
+    width: 15%;
+    bottom: 0;
+    left: 0;
+    padding: 0;
+    margin: 0 auto 0 auto;
+    transition: all ease-in-out 1s;
+}
+
+.profile-editing-buttons-section button{
+    border-radius: 10px;
+}
+
+.profile-editing-buttons-section button:hover{
+    transform: scale(1.1);
+}
+
+.profile-editing-buttons-section .edit-button{
+    background-color: #f3a03c;
+    width: 80%;
+    margin: 0 auto 0 auto;
+}
+
+.profile-editing-buttons-section > .submit-edit-button{
+    background-color: #3a933a;
+    width: 50%;
+    margin: 0 auto 0 auto;
+}
+
+.profile-editing-buttons-section > .cancel-edit-button{
+    background-color: #d74a4a;
+    width: 50%;
+    margin: 0 auto 0 auto;
+}
+
+.wrapper main .collection-content{
+    display: grid;
+    width: 100%;
+    height: 100vh;
+    margin-left: 15em;
+
+    grid-template-columns: 1fr;
+    grid-row-gap: 1.2em;
+    grid-auto-rows: min-content;
+    overflow: auto;
+}
+
+.wrapper main .collection-content::after{
+    content: ' ';
+    margin-right:15em;
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+    opacity: 0.5;
+    background-image: url('../img/old.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+}
+
+.wrapper main .memory-edit-div{
+    width: calc(100vw - 15rem);
+    height: 100vh;
+    display: flex;
+    position: fixed;
+    z-index: 6;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper main .memory-edit-div:after{
+    width: 100%;
+    height: 100vh;
+    content: ' ';
+    background: black;
+    opacity: 0.5;
+    position: absolute;
+    z-index: 5;
+}
+
+.wrapper main .memory-editor-area{
+    width: 60%;
+    height: 60%;
+    background-color: #cdc260;
+    margin: auto;
+    justify-content: center;
+    justify-items: center;
+    border-radius: 30px;
+    position: relative;
+    z-index: 6;
+}
+
+.wrapper main .memory-placeholder, .memory-text{
+    display: block;
+    width: 90%;
+    height: 75%;
+    margin: 1rem auto auto auto;
+    padding: 2%;
+    border: solid 2px black;
+    overflow: auto;
+    border-radius: 20px;
+}
+
+.memory-text{
+    background-color: #c0c2a3;
+}
+
+.wrapper main .memory-buttons-div{
+    width: 60%;
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.wrapper main .memory-buttons-div > button{
+    width: 33%;
+    height: 3rem;
+    margin: auto;
+}
+
+.wrapper main .collection-content .collection-photos{
+    position: relative;
+    z-index: 2;
+    max-width: 85%; 
+    margin-right: auto;
+    margin-left: auto;
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    grid-auto-rows: max-content;
+    grid-row-gap: 2rem;
+}
+
+.wrapper main .collection-content .collection-photos .photo-item{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: max-content;
+    grid-row-gap: 1rem;
+}
+
+.wrapper main .collection-content .collection-photos .photo-item>img{
+    width: 85%;
+    height: 12rem;
+    border-radius: 30px;
+    margin-right: auto;
+    margin-left: auto;
+    transition: all ease-in-out 0.4s;
+}
+
+.wrapper main .collection-content .collection-photos .photo-item>img:hover{
+    transform: scale(1.1);
+}
+
+.wrapper main .collection-content .add-form-div{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: max-content;
+    grid-row-gap: 1rem;
+    border-radius: 30px;
+    height: 100%;
+    width: 85%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.wrapper main .collection-content .add-form-div > .add-form{
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    z-index: 5;
+}
+
+.wrapper main .collection-content .add-form-div .add-form > .select-file{
+    height: 60%;
+    width: 85%;
+    border-radius: 30px;
+    margin: auto;
+    background-color: gray;
+    display: none;
+}
+
+.wrapper main .collection-content .add-form-div .add-form > .select-file:hover{
+    cursor: pointer;
+}
+
+.wrapper main .collection-content .add-form-div .add-form > button{
+    border-radius: 30px;
+    margin: auto;
+}
+
+.wrapper main .collection-content .add-form-div .add-form .replacement{
+    height: 10rem;
+    width: 85%;
+    border-radius: 30px;
+    margin: auto;
+    background-color: gray;
+    display: flex;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+.wrapper main .collection-content .add-form-div .add-form .replacement:hover{
+    cursor: pointer;
+
+}
+
+.wrapper main .collection-content .add-form-div .add-form .replacement .fa-plus-circle{
+    margin: auto;
+    z-index: 6;
+}
+
+.wrapper main .collection-content .collection-title{
+    min-width: max-content;
+    position: relative;
+    z-index: 2;
+    margin-top: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: khaki;
+    border-radius: 60px;
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.wrapper main .collection-content .collection-element-title{
+    position: relative;
+    z-index: 2;
+    border: none;
+    border-bottom: 0.2rem solid black;
+    width: 70%;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    font-size: 1.3rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    color: rgb(255, 255, 255);
+}
+
+.wrapper main .collection-content .collection-videos{
+    position: relative;
+    z-index: 2;
+    max-width: 85%; 
+    margin-right: auto;
+    margin-left: auto;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-auto-rows: max-content;
+    grid-row-gap: 2rem;
+}
+
+.wrapper main .collection-content .collection-videos .video-item{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: max-content;
+    grid-row-gap: 1rem;
+}
+
+.wrapper main .collection-content .collection-videos .video-item>img{
+    width: 85%;
+    height: auto;
+    border-radius: 30px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.wrapper main .collection-content .collection-memories{
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-rows: max-content;
+    justify-content: center;
+    grid-row-gap: 2rem;
+    grid-column-gap: 1rem;
+    padding-bottom: 4rem;
+}
+
+.wrapper main .collection-content .collection-memories .memory-item{
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    margin-left:auto;
+    margin-right: auto;
+    padding: 1rem;
+    width: 85%;
+    height: 8rem;
+    border-radius: 30px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: normal;
+    background-color: rgb(210, 180, 90);
+}
+
+.wrapper main .collection-content .collection-memories .memory-item::after{
+    bottom: 0;
+    z-index: 3;
+    left: 0;
+    content: ' ';
+    position: absolute;
+    width: 100%;
+    height: 4em;
+    background: linear-gradient(to bottom, rgba(240, 230, 140, 0), rgba(240, 230, 140, 1));
+}
+.wrapper main .sidebar .profile-pic{
+    width: 5em;
+    height: 5em;
+    border-radius: 50%;
+    background-color: white;
+    border: 3px solid #FE0303;
+    margin-top: 4em;
+    margin-bottom: 4em;
+    background-image: url('../img/travel.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.wrapper main .sidebar .handle {
+    width: 4em;
+    height: 2em;
+    border: 6px solid #4E4E4E;
+    background-color: #2c2c2c;
+    clip-path: polygon( 0% 0%, 100% 0%, 100% 100%, 70% 100%, 70% 40%, 30% 40%, 30% 100%, 0% 100%);
+}
+
+.wrapper main #registration-handle{
+    position: relative;
+    z-index: 2;
+    margin: auto auto 2rem auto;
+    width: 15%;
+    height: 5%;
+    background-color: #2b2121;
+    border: 4px solid #966262;
+    clip-path: polygon( 0% 0%, 100% 0%, 100% 100%, 70% 100%, 70% 40%, 30% 40%, 30% 100%, 0% 100%);
+}
+
+.wrapper main .sidebar ul {
+    width: 80%;
+    list-style-type: none;
+    padding-inline-start: 7%;
+    padding-inline-end: 7%;
+}
+
+.wrapper main .sidebar ul li {
+    height: 5vh;
+    margin-bottom: 2em;
+    border: 4px solid rgb(65, 65, 65);
+    background-color: #ece9e9;
+    transition: all ease-in-out 0.5s;
+}
+
+.wrapper main .sidebar ul li:hover, .wrapper main .sidebar .exit:hover{
+    border-color: rgb(226, 63, 63);
+    transform: scale(1.05);
+}
+
+.wrapper main .sidebar ul li a{
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all ease-in-out 0.5s;
+}
+
+.wrapper main .sidebar .head-sidebar-element > *{
+    border-radius: 60px 60px 0% 0%;
+}
+
+.wrapper main .sidebar .head-sidebar-element {
+    border-radius: 60px 60px 0% 0%;
+}
+
+.wrapper main .sidebar .sidebar-element {
+    border-radius: 0%;
+}
+
+.wrapper main .sidebar .foot-sidebar-element > *{
+    border-radius: 0% 0% 60px 60px;
+    margin-bottom: 0em;
+}
+
+.wrapper main .sidebar .foot-sidebar-element {
+    border-radius: 0% 0% 60px 60px;
+    margin-bottom: 0em;
+}
+
+.wrapper main .sidebar .wheels{
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    margin: 0% 25% 0% 25%;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapper main .sidebar .wheels .wheel{
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    background-color: #000000;
+    display: inline-block;
+    margin: 0em 0.5em 0em 0.5em;
+}
+
+.wrapper main .sidebar .exit {
+    position: absolute;
+    right: 65%;
+    bottom: 5%;
+    height: 3vh;
+    border: 4px solid rgb(65, 65, 65);
+    background-color: #ece9e9;
+    transition: all ease-in-out 0.5s;
+}
+
+.wrapper main .sidebar .exit a {
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all ease-in-out 0.5s;
+}
+
+
+.login-div{
+    width: 100vw;
+    height: 100vh;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url('../img/dawn.jpg');
+    background-size:  100% 100%;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+.logo{
+    font: italic normal normal 7em Segoe UI;
+    letter-spacing: 0em;
+    color: #E75B15;
+    text-shadow: 0px 3px 6px #151515;
+    justify-content: center;
+    display: flex;
+    margin: auto auto auto 10vw;
+}
+
+.login-div:after {
+    content: ' ';
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+    background: transparent linear-gradient(180deg, #FF000000 30%, #4A0202 100%) 0% 0% no-repeat padding-box;
+}
+
+.login-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: 40%;
+    margin-block-end: 0em;
+    margin: 30vh 5% auto auto;
+    background-color: khaki;
+    border-radius: 30px;
+    position: relative;
+    z-index: 2;
+}
+
+.login-form button{
+    display: flex;
+    font-size: 1rem;
+    color: #DDDD96;
+    background: #F17738 0% 0% no-repeat padding-box;
+    border: 1px solid #707070;
+    border-radius: 60px;
+    width: 30%;
+    height: 3rem;
+    margin: 0.5em;
+    line-height: 2.5em;
+    justify-content: center;
+}
+
+.login-form .login-buttons{
+    display:flex;
+    flex-direction: row;
+}
+
+.login-register-input{
+    font: normal normal normal 1.2em Segoe UI;
+    letter-spacing: 0px;
+    color: #000000;
+    text-align: left;
+    background-color: transparent;
+    border: none;
+    border-bottom: 4px solid #F4AF61;
+    margin: 0.5em;
+    width: 60%;
+    height: 20%;
+}
+
+.wrapper main .toggle{
+    display: none;
+}
+
+#valid{
+    border: solid 4px limegreen;
+}
+
+#not-valid{
+    border: solid 4px red;
+}
+
+#hidden{
+    display: none;
+}
+
+@media all and (max-device-width:768px) and (min-device-width: 230px){
+	.wrapper main #registration-handle{
+		margin: auto auto 2rem auto;
+		width: 55%;
+		height: 10%;
+	}
+	
+	.wrapper main .registration-form-div .registration-form{
+		width: 80%;
+		height: 70%;
+		margin: 0 auto auto auto;
+	}
+	
+	.wrapper main .registration-form-div .registration-form .message{
+		width: 85%;
+		height: 5%;
+		margin: 4%;
+		font-size: 3rem;
+	}
+	
+	.wrapper main .registration-form-div .registration-form input{
+		width: 85%;
+		height: 10%;
+		margin-bottom: 10%;
+		font-size: 3rem;
+	}
+	
+	.wrapper main .registration-form-div .registration-form .button-holder{
+		grid-column-gap: 5%;
+		width: 90%;
+		height: 10%;
+	}
+	
+	.wrapper main .registration-form-div .registration-form .button-holder .cancel-registration-btn{
+		width: 90%;
+		height: 80%;
+		font-size: 3rem;
+	}
+	
+	.wrapper main .registration-form-div .registration-form .button-holder .submit-registration-btn{
+		width: 90%;
+		height: 80%;
+		font-size: 3rem;
+	}
+	
+	.logo{
+		font-size: 14rem;
+	}
+	
+	.login-form .message{
+		width: 90%;
+		font-size: 3rem;
+		height: 10%;
+	}
+	
+	.login-register-input{
+		margin: 5%;
+		height: 10%;
+		width: 80%;
+		font-size: 3rem;
+	}
+	
+	.login-form .login-buttons{
+		width: 90%;
+		height: 15%;
+	}
+	
+	.login-form .login-buttons button{
+		font-size: 2rem;
+		margin: 0.5rem;
+		width: 30%;
+		height: 4rem;
+		overflow: hidden;
+		line-height: 1.5rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	
+	.wrapper main{
+        flex-direction: column;
+    }
+
+    .login-form{
+        margin: auto;
+        width: 70%;
+    }
+
+    .wrapper main .toggle{
+        display: flex;
+        position: fixed;
+        z-index: 3;
+        height: 5rem;
+        width: 100%;
+        background-color: black;
+        justify-content: center;
+        align-content: center;
+        color: white;
+        transition: all ease-in-out 1s;
+    }
+
+    .wrapper main .toggle:hover{
+        cursor: pointer;
+        background-color: #4E4E4E;
+    }
+
+    .wrapper main .sidebar{
+        transition: all ease-in-out 300ms;
+    }
+
+    .wrapper main #passive{
+        bottom: 0;
+        visibility: hidden;
+        left: -15rem;
+        z-index: 3;
+        justify-content: center;
+        transition: all ease-in-out 300ms;
+    }
+
+    .wrapper main #passive .exit{
+        position: initial;
+        margin: auto;
+    }
+
+    .wrapper main #passive .profile-pic{
+        display: none;
+    }
+
+    .wrapper main #passive .handle{
+        margin-top: auto;
+    }
+
+    .wrapper main #active{
+        width: 100vw;
+        height: calc(100vh - 5rem);
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        z-index: 3;
+        transition: all ease-in-out 300ms;
+    }
+
+    .wrapper main #active .handle{
+        margin-top: auto;
+        width: 40%;
+		height: 8%;
+        transition: all ease-in-out 0.5s;
+    }
+
+    .wrapper main #active .profile-pic{
+        display: none;
+    }
+
+    .wrapper main #active .exit{
+        margin: auto;
+        position: initial;
+        width: 50%;
+		font-size: 3rem;
+		height: 10%;
+     }
+	 
+	 .wrapper main #active ul{
+		 height: 60%;
+	 }
+
+    .wrapper main #active ul li{
+        height: 20%;
+		font-size: 3.5rem;
+		margin-bottom: 2rem;
+    }
+	
+	.wrapper main .sidebar .wheels{
+		display: none;
+	}
+	
+
+    .wrapper main .collection-content{
+        height: 100vh;
+        grid-template-columns: 1fr;
+        margin-top: 5rem;
+        margin-left: 0;
+    }
+
+    .wrapper main .memory-edit-div{
+        width: 100vw;
+        height: calc(100vh - 5rem);
+    }
+
+    .wrapper main .collection-content::after{
+        margin: 0;
+        height: 100vh;
+    }
+	
+	.wrapper main .memory-editor-area{
+		width: 80%;
+	
+	}
+	
+	.wrapper main .memory-buttons-div{
+		width: 80%;
+		height: 8rem;
+		margin: 2rem auto auto auto;
+	}
+	
+	.wrapper main .memory-buttons-div > button{
+		height: 6rem;
+		font-size: 3rem;
+	}
+	
+	.wrapper main .collection-content .collection-videos{
+		grid-template-columns: 1fr 1fr;
+		grid-row-gap: 3rem;
+	}
+
+    .wrapper main .collection-content .collection-photos{
+        grid-template-columns: 1fr 1fr;
+		grid-column-gap: 3rem;
+    }
+	
+	.wrapper main .collection-content .collection-photos .photo-item>img{
+		height: 20rem;
+	}
+	.wrapper main .collection-content .collection-element-title{
+		font-size: 3rem;
+	}
+	
+	.wrapper main .collection-content .add-form-div .add-form .replacement{
+		height: 20rem;
+	}
+	
+	.wrapper main .collection-content .add-form-div .select-title{
+		height: 2rem;
+		font-size: 2rem;
+	}
+	
+	.wrapper main .collection-content .add-form-div .add-form > button{
+		height: 3rem;
+		font-size: 2rem;
+	}
+	
+	.wrapper main .collection-content .collection-title{
+		width: 8rem;
+		height: 4rem;
+		font-size: 3rem;
+	}
+	
+	.wrapper main .collection-content .collection-memories .memory-item{
+		height: 20rem;
+		font-size: 3rem;
+	}
+	
+	.wrapper main .collection-content .collection-memories{
+		grid-template-columns: 1fr 1fr;
+	}
+
+    .wrapper main .forum-content{
+        height: 100%;
+        grid-template-columns: 1fr;
+        margin-top: 5rem;
+        margin-left: 0;
+    }
+
+    .wrapper main .forum-content::after{
+        margin: 0;
+        height: 100%;
+    }
+	
+	.wrapper main .forum-content .friends-news{
+		height: max-content;
+	}
+	
+	.wrapper main .forum-content .friend-icon{
+		min-width: 8rem;
+		min-height: 8rem;
+		max-width: 10rem;
+		max-height: 10rem;
+	}
+	
+	.wrapper main .forum-content .friends-posts .post .post-content{
+		font-size: 1rem;
+	}
+	
+	.wrapper main .forum-content .general-news{
+		overflow: auto;
+		white-space: nowrap;
+	}
+	
+	.wrapper main .forum-content .general-news .news-artickle{
+		font-size: 2rem;
+	}
+
+    .wrapper main .profile-content{
+        height: 100vh;
+        grid-template-columns: 1fr;
+        margin-top: 5rem;
+        margin-left: 0;
+		overflow: auto;
+    }
+
+    .wrapper main .profile-content::after{
+        margin: 0;
+        height: 100%;
+    }
+	
+	.wrapper main .profile-content .profile-head .profile-image {
+		width: 15rem;
+		height: 15rem;
+	}
+
+	.wrapper main .profile-content .profile-head h2{
+		font-size: 5rem;
+	}
+	
+	.wrapper main .profile-content .profile-head .underline{
+		height: 0.5rem;
+	}
+	
+	.wrapper main .profile-content .about-me-section .about-me{
+		width: 70%;
+		height: 5rem;
+		font-size: 3rem;
+	}
+	
+	.wrapper main .profile-content .text-bubble{
+		font-size: 3rem;
+	}
+	
+	.wrapper main .profile-content .profile-editing-buttons-section{
+		width: 50%;
+		height: 6rem;
+		justify-content: center;
+		align-items: center;
+	}
+	
+	.wrapper main .profile-content .profile-editing-buttons-section button{
+		height: 4rem;
+	}
+	
+	.wrapper main .profile-editing-buttons-section .edit-button{
+		width: 80%;
+		font-size: 3rem;
+	}
+	
+	.wrapper main .profile-editing-buttons-section .cancel-edit-button, .submit-edit-button{
+		width: 50%;
+		font-size: 2rem;
+	}
+
+    .wrapper main .profile-content .my-travelers-code-section .travelers-code{
+		width: 80%;
+        padding-bottom: 3rem;
+		justify-content: center;
+		align-items:center;
+    }
+	
+	.wrapper main .profile-content .my-travelers-code-section .travelers-code h3{
+		font-size: 3rem;
+		margin: 0;
+	}
+
+    .wrapper main .settings-content{
+        height: 100vh;
+        grid-template-columns: 1fr;
+        margin-top: 5rem;
+        margin-left: 0;
+    }
+
+    .wrapper main .settings-content::after{
+        margin: 0;
+        height: 100%;
+    }
+
+    .wrapper main .settings-content .settings{
+        padding-bottom: 1rem;
+		grid-row-gap: 4rem;
+    }
+	
+	.wrapper main .settings-content .settings .delete-account .delete-account-button{
+		min-width: max-content;
+		height: 3rem;
+		font-size: 3rem;
+	}
+	
+	.wrapper main .settings-content .settings .settings-buttons>.save-settings, .default-settings{
+		height: 8rem;
+		font-size: 3rem;
+	}
+
+    .wrapper main .settings-content .settings .settings-handle{
+        width: 40%;
+        height: 8rem;
+    }
+
+    .wrapper main .settings-content .settings .upper-part, .middle-part, .bottom-part{
+        max-width: 90%;
+		font-size: 3rem;
+		min-height: 20rem;
+    }
+	
+}
+
+@media all and (max-device-width: 1200px) and (min-device-width: 770px){
+
+    .wrapper main{
+        flex-direction: column;
+    }
+
+    .logo{
+        margin: auto;
+        font: italic normal normal 10vw Segoe UI;
+    }
+
+    .login-form{
+        margin: auto;
+        width: 50%;
+    }
+
+    .wrapper main .toggle{
+        display: flex;
+        position: fixed;
+        z-index: 3;
+        height: 5rem;
+        width: 100%;
+        background-color: black;
+        justify-content: center;
+        align-content: center;
+        color: white;
+        transition: all ease-in-out 1s;
+    }
+
+    .wrapper main .toggle:hover{
+        cursor: pointer;
+        background-color: #4E4E4E;
+    }
+
+    .wrapper main .sidebar{
+        transition: all ease-in-out 300ms;
+    }
+
+    .wrapper main #passive{
+        bottom: 0;
+        visibility: hidden;
+        left: -15rem;
+        z-index: 3;
+        justify-content: center;
+        transition: all ease-in-out 300ms;
+    }
+
+    .wrapper main #passive .exit{
+        position: initial;
+        margin: auto;
+    }
+
+    .wrapper main #passive .profile-pic{
+        display: none;
+    }
+
+    .wrapper main #passive .handle{
+        margin-top: auto;
+    }
+
+    .wrapper main #active{
+        width: 100vw;
+        height: calc(100vh - 5rem);
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        z-index: 3;
+        transition: all ease-in-out 300ms;
+    }
+
+    .wrapper main #active .handle{
+        margin-top: auto;
+        width: 10%;
+        height: 5%;
+        transition: all ease-in-out 0.5s;
+		display: none;
+    }
+
+    .wrapper main #active .profile-pic{
+        display: none;
+    }
+
+    .wrapper main #active .exit{
+        margin: auto;
+        position: initial;
+        width: 30%;
+        height: 5%
+     }
+
+    .wrapper main #active ul li{
+        height: 5rem;
+    }
+	
+	.wrapper main #active .wheels{
+		display: none;
+	}
+
+    .wrapper main #active .wheels .wheel{
+        height: 3rem;
+        width: 3rem;
+        margin: 0 2rem 0 2rem;
+    }
+
+    .wrapper main .collection-content{
+        height: 100%;
+        grid-template-columns: 1fr;
+        margin-top: 5rem;
+        margin-left: 0;
+    }
+
+    .wrapper main .memory-edit-div{
+        width: 100vw;
+        height: calc(100vh - 5rem);
+    }
+
+    .wrapper main .collection-content::after{
+        margin: 0;
+        height: 100%;
+    }
+
+    .wrapper main .collection-content .collection-photos{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .wrapper main .forum-content{
+        height: 100%;
+        grid-template-columns: 1fr;
+        margin-top: 5rem;
+        margin-left: 0;
+    }
+
+    .wrapper main .forum-content::after{
+        margin: 0;
+        height: 100%;
+    }
+
+    .wrapper main .profile-content{
+        height: 100vh;
+        grid-template-columns: 1fr;
+        margin-top: 5rem;
+        margin-left: 0;
+    }
+
+    .wrapper main .profile-content::after{
+        margin: 0;
+        height: 100%;
+    }
+
+    .wrapper main .profile-content .my-travelers-code-section{
+        padding-bottom: 3rem;
+    }
+
+    .wrapper main .settings-content{
+        height: 100%;
+        grid-template-columns: 1fr;
+        margin-top: 5rem;
+        margin-left: 0;
+    }
+
+    .wrapper main .settings-content::after{
+        margin: 0;
+        height: 100%;
+    }
+
+    .wrapper main .settings-content .settings{
+        padding-bottom: 5rem;
+    }
+
+    .wrapper main .settings-content .settings .settings-handle{
+        width: 10%;
+        height: 3rem;
+    }
+
+    .wrapper main .settings-content .settings .upper-part, .middle-part, .bottom-part{
+        max-width: 60%;
+    }
+
+}

@@ -1,20 +1,39 @@
+const fileTitleFields = document.querySelectorAll('.select-title');
+const fileSelectionReplacements = document.querySelectorAll('.replacement');
 
-let titleField = document.querySelector(".select-photo-title");
-titleField.addEventListener("keyup", function() {
-    var content = document.forms["UploadForm"]["photo-title"].value;
-    if(content != "" && content != null)
-    {
-        if(document.querySelector(".select-photo").files.length != 0) {
-            document.querySelector(".submit-button").disabled = false;
+function typeFileTitle(element)
+{
+    element.addEventListener("keyup", function(event){
+        event.preventDefault();
+        fileForm = element.parentNode;
+
+        const content = element.value;
+        if(content != "" && content != null)
+        {
+            if(fileForm.querySelector('.select-file').files.length != 0) {
+                fileForm.querySelector('.submit-button').disabled = false;
+            }
         }
-    }
-    else {
-        document.querySelector(".submit-button").disabled = true;
-    }
+        else {
+            fileForm.querySelector(".submit-button").disabled = true;
+        }
+    });
+}
+
+function selectFile(element)
+{
+    element.addEventListener("click", function(event){
+        event.preventDefault();
+        fileForm = element.parentNode;
+
+        fileForm.querySelector('.select-file').click();
+    });
+}
+
+fileTitleFields.forEach(function(elem){
+    typeFileTitle(elem);
 });
 
-let realFileInput = document.querySelector(".select-photo");
-let fileInputReplacement = document.querySelector(".replacement");
-fileInputReplacement.addEventListener("click", function(){
-    $(".select-photo").trigger("click");
+fileSelectionReplacements.forEach(function(elem){
+    selectFile(elem);
 });

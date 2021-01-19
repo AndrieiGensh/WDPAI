@@ -35,7 +35,33 @@ class AppController
         }
 
         print $output;
+    }
 
+    public function distinguishActionRequest()
+    {
+        if($this->isPOST())
+        {
+            if(isset($_POST["action"]) && !empty($_POST["action"]))
+            {
+                if(method_exists($this, $_POST["action"]))
+                {
+                    $method = $_POST["action"];
+                    $this->$method();
+                }
+                else
+                {
+                    echo json_encode(array('error' => 'MethodNotExist', 'success' => "false"));
+                }
+            }
+            else
+            {
+                echo json_encode(array('error' => 'MethodNotSet', 'success' => "false"));
+            }
+        }
+        else
+        {
+            echo json_encode(array('error' => 'NotPost', 'success' => "false"));
+        }
     }
 
 }

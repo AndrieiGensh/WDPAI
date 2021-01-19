@@ -9,9 +9,9 @@ Routing::set('login', 'SecurityController');
 Routing::set('registration', 'RegistrationController');
 Routing::set('', 'SecurityController');
 Routing::set('profile', 'ProfileController');
-Routing::set('forum', 'DefaultController');
+Routing::set('forum', 'ForumController');
 Routing::set('collection', 'CollectionController');
-Routing::set('settings', 'DefaultController');
+Routing::set('settings', 'SettingsController');
 
 Routing::run($path);
 

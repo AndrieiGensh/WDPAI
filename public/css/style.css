@@ -258,6 +258,26 @@ body footer {
     margin-right: auto;
 }
 
+.wrapper main .settings-content .settings .delete-account{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.wrapper main .settings-content .settings .delete-account .delete-account-button{
+    background-color: red;
+    text-align: center;
+    border-radius: 30px;
+}
+
+.wrapper main .settings-content .settings .delete-account>*
+{
+    margin: 10%  1rem 2rem ;
+}
+
+
 .wrapper main .forum-content{
     display: grid;
     width: 100%;
@@ -436,7 +456,7 @@ body footer {
     height: 100vh;
     z-index: 1;
     opacity: 0.5;
-    background-image: url('../img/mountains.jpg');
+    background-image: url('../img/travel.jpg');
     background-repeat: no-repeat;
     background-size: 100% 100%;
     background-attachment: fixed;
@@ -472,6 +492,7 @@ body footer {
     margin: 0;
     z-index: 2;
     position: relative;
+    color: white;
 }
 
 .wrapper main .profile-content .profile-head .underline{
@@ -539,34 +560,52 @@ body footer {
     margin-top: 1em;
 }
 
-.const-about-me, .const-code{
-    padding-left: 1.5em;
-    padding-right: 1.5em;
-    padding-top:1.5em;
-    padding-bottom: 1.5em;
+.text-bubble textarea{
+    margin-bottom: 1rem;
+}
+
+.const-info{
+    padding: 1rem;
+    border-bottom: solid 1px gray;
+    margin-bottom: 0.5rem;
 }
 
 .profile-editing-buttons-section{
     display: flex;
     flex-direction: row;
     height: 1.5rem;
-    width: 5rem;
+    width: 15%;
     bottom: 0;
     left: 0;
     padding: 0;
-    margin-left: auto;
+    margin: 0 auto 0 auto;
+    transition: all ease-in-out 1s;
 }
 
-.profile-editing-buttons-section .edit-about-me{
-    background-color: blue;
+.profile-editing-buttons-section button{
+    border-radius: 10px;
 }
 
-.profile-editing-buttons-section > .submit-edit-about-me{
-    background-color: green;
+.profile-editing-buttons-section button:hover{
+    transform: scale(1.1);
 }
 
-.profile-editing-buttons-section > .cancel-edit-about-me{
-    background-color: red;
+.profile-editing-buttons-section .edit-button{
+    background-color: #f3a03c;
+    width: 80%;
+    margin: 0 auto 0 auto;
+}
+
+.profile-editing-buttons-section > .submit-edit-button{
+    background-color: #3a933a;
+    width: 50%;
+    margin: 0 auto 0 auto;
+}
+
+.profile-editing-buttons-section > .cancel-edit-button{
+    background-color: #d74a4a;
+    width: 50%;
+    margin: 0 auto 0 auto;
 }
 
 .wrapper main .collection-content{
@@ -595,6 +634,68 @@ body footer {
     background-attachment: fixed;
 }
 
+.wrapper main .memory-edit-div{
+    width: calc(100vw - 15rem);
+    height: 100vh;
+    display: flex;
+    position: fixed;
+    z-index: 6;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper main .memory-edit-div:after{
+    width: 100%;
+    height: 100vh;
+    content: ' ';
+    background: black;
+    opacity: 0.5;
+    position: absolute;
+    z-index: 5;
+}
+
+.wrapper main .memory-editor-area{
+    width: 60%;
+    height: 60%;
+    background-color: #cdc260;
+    margin: auto;
+    justify-content: center;
+    justify-items: center;
+    border-radius: 30px;
+    position: relative;
+    z-index: 6;
+}
+
+.wrapper main .memory-placeholder, .memory-text{
+    display: block;
+    width: 90%;
+    height: 75%;
+    margin: 1rem auto auto auto;
+    padding: 2%;
+    border: solid 2px black;
+    overflow: auto;
+    border-radius: 20px;
+}
+
+.memory-text{
+    background-color: #c0c2a3;
+}
+
+.wrapper main .memory-buttons-div{
+    width: 60%;
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.wrapper main .memory-buttons-div > button{
+    width: 33%;
+    height: 3rem;
+    margin: auto;
+}
+
 .wrapper main .collection-content .collection-photos{
     position: relative;
     z-index: 2;
@@ -607,7 +708,7 @@ body footer {
     grid-row-gap: 2rem;
 }
 
-.wrapper main .collection-content .collection-photos .photo-item, .add-photo-form{
+.wrapper main .collection-content .collection-photos .photo-item{
     display: grid;
     grid-template-columns: 1fr;
     grid-auto-rows: max-content;
@@ -627,7 +728,11 @@ body footer {
     transform: scale(1.1);
 }
 
-.wrapper main .collection-content .collection-photos .add-photo-form{
+.wrapper main .collection-content .add-form-div{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: max-content;
+    grid-row-gap: 1rem;
     border-radius: 30px;
     height: 100%;
     width: 85%;
@@ -638,7 +743,7 @@ body footer {
     margin-right: auto;
 }
 
-.wrapper main .collection-content .collection-photos .add-photo-form > .add-photo{
+.wrapper main .collection-content .add-form-div > .add-form{
     width: 100%;
     height: 100%;
     justify-content: center;
@@ -647,7 +752,7 @@ body footer {
     z-index: 5;
 }
 
-.wrapper main .collection-content .collection-photos .add-photo-form .add-photo > .select-photo{
+.wrapper main .collection-content .add-form-div .add-form > .select-file{
     height: 60%;
     width: 85%;
     border-radius: 30px;
@@ -656,16 +761,16 @@ body footer {
     display: none;
 }
 
-.wrapper main .collection-content .collection-photos .add-photo-form .add-photo > .select-photo:hover{
+.wrapper main .collection-content .add-form-div .add-form > .select-file:hover{
     cursor: pointer;
 }
 
-.wrapper main .collection-content .collection-photos .add-photo-form .add-photo > button{
+.wrapper main .collection-content .add-form-div .add-form > button{
     border-radius: 30px;
     margin: auto;
 }
 
-.wrapper main .collection-content .collection-photos .add-photo-form .add-photo .replacement{
+.wrapper main .collection-content .add-form-div .add-form .replacement{
     height: 10rem;
     width: 85%;
     border-radius: 30px;
@@ -676,12 +781,12 @@ body footer {
     opacity: 0.5;
 }
 
-.wrapper main .collection-content .collection-photos .add-photo-form .add-photo .replacement:hover{
+.wrapper main .collection-content .add-form-div .add-form .replacement:hover{
     cursor: pointer;
 
 }
 
-.wrapper main .collection-content .collection-photos .add-photo-form .add-photo .replacement .fa-plus-circle{
+.wrapper main .collection-content .add-form-div .add-form .replacement .fa-plus-circle{
     margin: auto;
     z-index: 6;
 }
@@ -758,6 +863,8 @@ body footer {
 .wrapper main .collection-content .collection-memories .memory-item{
     position: relative;
     z-index: 2;
+    display: flex;
+    justify-content: center;
     margin-left:auto;
     margin-right: auto;
     padding: 1rem;
@@ -907,86 +1014,71 @@ body footer {
 }
 
 
-
-.bodycontainer {
-    width: 100%;
-    height: 100%;
+.login-div{
+    width: 100vw;
+    height: 100vh;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     background-image: url('../img/dawn.jpg');
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 40vh 60vh;
-    gap: 0em;
+    background-size:  100% 100%;
     background-attachment: fixed;
+    background-repeat: no-repeat;
 }
 
-.container {
-    display: grid;
-    grid-template-columns: repeat(20, 1fr);
-    grid-template-rows: repeat(12, 1fr);
-    grid-gap: 1em;
-    grid-row: 2 / 3;
-    grid-column: 1;
-    background: transparent linear-gradient(180deg, #FF000000 0%, #4A0202 70%, #030000 100%) 0% 0% no-repeat padding-box;
-}
-
-.upper-container {
-    grid-row: 1;
-    grid-column: 1;
-    display: grid;
-    grid-template-rows: repeat(5, 1fr);
-    grid-template-columns: repeat(10, 1fr);
-}
-
-.upper-container > .logo {
-    grid-column: 3 / 5;
-    grid-row: 4 / 6;
+.logo{
     font: italic normal normal 7em Segoe UI;
     letter-spacing: 0em;
     color: #E75B15;
     text-shadow: 0px 3px 6px #151515;
     justify-content: center;
     display: flex;
-    float: left;
+    margin: auto auto auto 10vw;
 }
 
-.signup,.login {
-    display: grid;
-    background: #EFD09A 0% 0% no-repeat padding-box;
-    border-radius: 60px 60px 60px 0px;
-    height: 100%;
+.login-div:after {
+    content: ' ';
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+    background: transparent linear-gradient(180deg, #FF000000 30%, #4A0202 100%) 0% 0% no-repeat padding-box;
 }
 
-.signup {
-    grid-column: 5 / 11;
-    grid-row: 5 / 12;
-}
-
-.login {
-    grid-column: 13 / 19;
-    grid-row: 5 / 10;
-}
-
-.login-form, .register-form{
+.login-form{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 100%;
+    width: 40%;
+    height: 40%;
     margin-block-end: 0em;
+    margin: 30vh 5% auto auto;
+    background-color: khaki;
+    border-radius: 30px;
+    position: relative;
+    z-index: 2;
 }
 
-.login-form > button, .register-form > button {
-    font-size: 1.2em;
+.login-form button{
+    display: flex;
+    font-size: 1rem;
     color: #DDDD96;
     background: #F17738 0% 0% no-repeat padding-box;
     border: 1px solid #707070;
     border-radius: 60px;
-    width: 60%;
+    width: 30%;
+    height: 3rem;
     margin: 0.5em;
     line-height: 2.5em;
+    justify-content: center;
+}
+
+.login-form .login-buttons{
+    display:flex;
+    flex-direction: row;
 }
 
 .login-register-input{
@@ -996,22 +1088,10 @@ body footer {
     text-align: left;
     background-color: transparent;
     border: none;
-    border-bottom: 4px solid #F4AF61;;
+    border-bottom: 4px solid #F4AF61;
     margin: 0.5em;
-    width: 80%;
-    height: 100%;
-}
-
-
-.OR {
-    text-align: center;
-    font: italic normal 600 2.1em Segoe UI;
-    letter-spacing: 0px;
-    color: #CCCC26;
-    grid-column: 11 / 13;
-    grid-row: 7 / 9;
-    justify-content: center;
-    align-content: center;
+    width: 60%;
+    height: 20%;
 }
 
 .wrapper main .toggle{
@@ -1030,10 +1110,421 @@ body footer {
     display: none;
 }
 
-@media all and (max-width:1200px){
+@media all and (max-device-width:768px) and (min-device-width: 230px){
+	.wrapper main #registration-handle{
+		margin: auto auto 2rem auto;
+		width: 55%;
+		height: 10%;
+	}
+	
+	.wrapper main .registration-form-div .registration-form{
+		width: 80%;
+		height: 70%;
+		margin: 0 auto auto auto;
+	}
+	
+	.wrapper main .registration-form-div .registration-form .message{
+		width: 85%;
+		height: 5%;
+		margin: 4%;
+		font-size: 3rem;
+	}
+	
+	.wrapper main .registration-form-div .registration-form input{
+		width: 85%;
+		height: 10%;
+		margin-bottom: 10%;
+		font-size: 3rem;
+	}
+	
+	.wrapper main .registration-form-div .registration-form .button-holder{
+		grid-column-gap: 5%;
+		width: 90%;
+		height: 10%;
+	}
+	
+	.wrapper main .registration-form-div .registration-form .button-holder .cancel-registration-btn{
+		width: 90%;
+		height: 80%;
+		font-size: 3rem;
+	}
+	
+	.wrapper main .registration-form-div .registration-form .button-holder .submit-registration-btn{
+		width: 90%;
+		height: 80%;
+		font-size: 3rem;
+	}
+	
+	.logo{
+		font-size: 14rem;
+	}
+	
+	.login-form .message{
+		width: 90%;
+		font-size: 3rem;
+		height: 10%;
+	}
+	
+	.login-register-input{
+		margin: 5%;
+		height: 10%;
+		width: 80%;
+		font-size: 3rem;
+	}
+	
+	.login-form .login-buttons{
+		width: 90%;
+		height: 15%;
+	}
+	
+	.login-form .login-buttons button{
+		font-size: 2rem;
+		margin: 0.5rem;
+		width: 30%;
+		height: 4rem;
+		overflow: hidden;
+		line-height: 1.5rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	
+	.wrapper main{
+        flex-direction: column;
+    }
+
+    .login-form{
+        margin: auto;
+        width: 70%;
+    }
+
+    .wrapper main .toggle{
+        display: flex;
+        position: fixed;
+        z-index: 3;
+        height: 5rem;
+        width: 100%;
+        background-color: black;
+        justify-content: center;
+        align-content: center;
+        color: white;
+        transition: all ease-in-out 1s;
+    }
+
+    .wrapper main .toggle:hover{
+        cursor: pointer;
+        background-color: #4E4E4E;
+    }
+
+    .wrapper main .sidebar{
+        transition: all ease-in-out 300ms;
+    }
+
+    .wrapper main #passive{
+        bottom: 0;
+        visibility: hidden;
+        left: -15rem;
+        z-index: 3;
+        justify-content: center;
+        transition: all ease-in-out 300ms;
+    }
+
+    .wrapper main #passive .exit{
+        position: initial;
+        margin: auto;
+    }
+
+    .wrapper main #passive .profile-pic{
+        display: none;
+    }
+
+    .wrapper main #passive .handle{
+        margin-top: auto;
+    }
+
+    .wrapper main #active{
+        width: 100vw;
+        height: calc(100vh - 5rem);
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        z-index: 3;
+        transition: all ease-in-out 300ms;
+    }
+
+    .wrapper main #active .handle{
+        margin-top: auto;
+        width: 40%;
+		height: 8%;
+        transition: all ease-in-out 0.5s;
+    }
+
+    .wrapper main #active .profile-pic{
+        display: none;
+    }
+
+    .wrapper main #active .exit{
+        margin: auto;
+        position: initial;
+        width: 50%;
+		font-size: 3rem;
+		height: 10%;
+     }
+	 
+	 .wrapper main #active ul{
+		 height: 60%;
+	 }
+
+    .wrapper main #active ul li{
+        height: 20%;
+		font-size: 3.5rem;
+		margin-bottom: 2rem;
+    }
+	
+	.wrapper main .sidebar .wheels{
+		display: none;
+	}
+	
+
+    .wrapper main .collection-content{
+        height: 100vh;
+        grid-template-columns: 1fr;
+        margin-top: 5rem;
+        margin-left: 0;
+    }
+
+    .wrapper main .memory-edit-div{
+        width: 100vw;
+        height: calc(100vh - 5rem);
+    }
+
+    .wrapper main .collection-content::after{
+        margin: 0;
+        height: 100vh;
+    }
+	
+	.wrapper main .memory-editor-area{
+		width: 80%;
+	
+	}
+	
+	.wrapper main .memory-buttons-div{
+		width: 80%;
+		height: 8rem;
+		margin: 2rem auto auto auto;
+	}
+	
+	.wrapper main .memory-buttons-div > button{
+		height: 6rem;
+		font-size: 3rem;
+	}
+	
+	.wrapper main .collection-content .collection-videos{
+		grid-template-columns: 1fr 1fr;
+		grid-row-gap: 3rem;
+	}
+
+    .wrapper main .collection-content .collection-photos{
+        grid-template-columns: 1fr 1fr;
+		grid-column-gap: 3rem;
+    }
+	
+	.wrapper main .collection-content .collection-photos .photo-item>img{
+		height: 20rem;
+	}
+	.wrapper main .collection-content .collection-element-title{
+		font-size: 3rem;
+	}
+	
+	.wrapper main .collection-content .add-form-div .add-form .replacement{
+		height: 20rem;
+	}
+	
+	.wrapper main .collection-content .add-form-div .select-title{
+		height: 2rem;
+		font-size: 2rem;
+	}
+	
+	.wrapper main .collection-content .add-form-div .add-form > button{
+		height: 3rem;
+		font-size: 2rem;
+	}
+	
+	.wrapper main .collection-content .collection-title{
+		width: 8rem;
+		height: 4rem;
+		font-size: 3rem;
+	}
+	
+	.wrapper main .collection-content .collection-memories .memory-item{
+		height: 20rem;
+		font-size: 3rem;
+	}
+	
+	.wrapper main .collection-content .collection-memories{
+		grid-template-columns: 1fr 1fr;
+	}
+
+    .wrapper main .forum-content{
+        height: 100%;
+        grid-template-columns: 1fr;
+        margin-top: 5rem;
+        margin-left: 0;
+    }
+
+    .wrapper main .forum-content::after{
+        margin: 0;
+        height: 100%;
+    }
+	
+	.wrapper main .forum-content .friends-news{
+		height: max-content;
+	}
+	
+	.wrapper main .forum-content .friend-icon{
+		min-width: 8rem;
+		min-height: 8rem;
+		max-width: 10rem;
+		max-height: 10rem;
+	}
+	
+	.wrapper main .forum-content .friends-posts .post .post-content{
+		font-size: 1rem;
+	}
+	
+	.wrapper main .forum-content .general-news{
+		overflow: auto;
+		white-space: nowrap;
+	}
+	
+	.wrapper main .forum-content .general-news .news-artickle{
+		font-size: 2rem;
+	}
+
+    .wrapper main .profile-content{
+        height: 100vh;
+        grid-template-columns: 1fr;
+        margin-top: 5rem;
+        margin-left: 0;
+		overflow: auto;
+    }
+
+    .wrapper main .profile-content::after{
+        margin: 0;
+        height: 100%;
+    }
+	
+	.wrapper main .profile-content .profile-head .profile-image {
+		width: 15rem;
+		height: 15rem;
+	}
+
+	.wrapper main .profile-content .profile-head h2{
+		font-size: 5rem;
+	}
+	
+	.wrapper main .profile-content .profile-head .underline{
+		height: 0.5rem;
+	}
+	
+	.wrapper main .profile-content .about-me-section .about-me{
+		width: 70%;
+		height: 5rem;
+		font-size: 3rem;
+	}
+	
+	.wrapper main .profile-content .text-bubble{
+		font-size: 3rem;
+	}
+	
+	.wrapper main .profile-content .profile-editing-buttons-section{
+		width: 50%;
+		height: 6rem;
+		justify-content: center;
+		align-items: center;
+	}
+	
+	.wrapper main .profile-content .profile-editing-buttons-section button{
+		height: 4rem;
+	}
+	
+	.wrapper main .profile-editing-buttons-section .edit-button{
+		width: 80%;
+		font-size: 3rem;
+	}
+	
+	.wrapper main .profile-editing-buttons-section .cancel-edit-button, .submit-edit-button{
+		width: 50%;
+		font-size: 2rem;
+	}
+
+    .wrapper main .profile-content .my-travelers-code-section .travelers-code{
+		width: 80%;
+        padding-bottom: 3rem;
+		justify-content: center;
+		align-items:center;
+    }
+	
+	.wrapper main .profile-content .my-travelers-code-section .travelers-code h3{
+		font-size: 3rem;
+		margin: 0;
+	}
+
+    .wrapper main .settings-content{
+        height: 100vh;
+        grid-template-columns: 1fr;
+        margin-top: 5rem;
+        margin-left: 0;
+    }
+
+    .wrapper main .settings-content::after{
+        margin: 0;
+        height: 100%;
+    }
+
+    .wrapper main .settings-content .settings{
+        padding-bottom: 1rem;
+		grid-row-gap: 4rem;
+    }
+	
+	.wrapper main .settings-content .settings .delete-account .delete-account-button{
+		min-width: max-content;
+		height: 3rem;
+		font-size: 3rem;
+	}
+	
+	.wrapper main .settings-content .settings .settings-buttons>.save-settings, .default-settings{
+		height: 8rem;
+		font-size: 3rem;
+	}
+
+    .wrapper main .settings-content .settings .settings-handle{
+        width: 40%;
+        height: 8rem;
+    }
+
+    .wrapper main .settings-content .settings .upper-part, .middle-part, .bottom-part{
+        max-width: 90%;
+		font-size: 3rem;
+		min-height: 20rem;
+    }
+	
+}
+
+@media all and (max-device-width: 1200px) and (min-device-width: 770px){
 
     .wrapper main{
         flex-direction: column;
+    }
+
+    .logo{
+        margin: auto;
+        font: italic normal normal 10vw Segoe UI;
+    }
+
+    .login-form{
+        margin: auto;
+        width: 50%;
     }
 
     .wrapper main .toggle{
@@ -1095,6 +1586,7 @@ body footer {
         width: 10%;
         height: 5%;
         transition: all ease-in-out 0.5s;
+		display: none;
     }
 
     .wrapper main #active .profile-pic{
@@ -1111,6 +1603,10 @@ body footer {
     .wrapper main #active ul li{
         height: 5rem;
     }
+	
+	.wrapper main #active .wheels{
+		display: none;
+	}
 
     .wrapper main #active .wheels .wheel{
         height: 3rem;
@@ -1123,6 +1619,11 @@ body footer {
         grid-template-columns: 1fr;
         margin-top: 5rem;
         margin-left: 0;
+    }
+
+    .wrapper main .memory-edit-div{
+        width: 100vw;
+        height: calc(100vh - 5rem);
     }
 
     .wrapper main .collection-content::after{

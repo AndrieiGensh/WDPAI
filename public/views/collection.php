@@ -4,6 +4,7 @@
     <title>COLLECTION</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
     <script src="https://kit.fontawesome.com/d9f59e1a3c.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./public/js/permissionCheck.js" defer></script>
     <script type="text/javascript" src="./public/js/menutoggle.js" defer></script>
     <script type="text/javascript" src="./public/js/toggleSubmitButton.js" defer></script>
     <script type="text/javascript" src="./public/js/fetchCollectionUpload.js" defer></script>
@@ -22,62 +23,25 @@
         </header>
 
         <main>
-            <div class="toggle">
-
-            </div>
-
-            <div class="sidebar" id="passive">
-
-                <div class="profile-pic">
-
-                </div>
-
-                <div class="handle">
-
-                </div>
-
-                <ul>
-
-                    <li class="head-sidebar-element">
-                        <a href="profile">
-                            <i class="fas fa-address-card"><span>Profile</span></i>
-                        </a>
-                    </li>
-                    <li class="sidebar-element">
-                        <a href="forum">
-                            <i class="fas fa-comments"><span>Forum</span></i>
-                        </a>
-                    </li>
-                    <li class="sidebar-element">
-                        <a href="collection">
-                            <i class="fas fa-photo-video"><span>Collection</span></i>
-                        </a>
-                    </li>
-                    <li class="foot-sidebar-element">
-                        <a href="settings">
-                            <i class="fas fa-cogs"><span>Settings</span></i>
-                        </a>
-                    </li>
-
-                </ul>
-
-                <div class="wheels">
-
-                   <span class="wheel"></span>
-
-                   <span class="wheel"></span>
-
-                </div>
-
-                <div class="exit">
-                    <a href="login">
-                        <i class="fas fa-door-open"><span>Exit</span></i>
-                    </a>
-                </div>
-
-            </div>
+            <?php include 'public/templates/sidebarTemplate.php'?>
 
             <div class="collection-content">
+                <div class="memory-edit-div" id="hidden">
+                    <div class="memory-editor-area" id="">
+                        <textarea class="memory-text" id="hidden">
+
+                        </textarea>
+                        <div class="memory-placeholder">
+                        </div>
+
+                        <div class="memory-buttons-div">
+                            <button class="memory-edit-submit-button" id="hidden">Submit</button>
+                            <button class="memory-edit-button">Edit</button>
+                            <button class="memory-delete-button" id="hidden">Delete</button>
+                            <button class="memory-edit-cancel-button" id="hidden">Cancel</button>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="collection-title">
                     Photos
@@ -85,7 +49,7 @@
 
                 <section class="collection-photos">
                     <?php foreach($photos as $photo): ?>
-                    <div class="photo-item">
+                    <div class="photo-item" id="<?= $photo->getPhotoId()?>">
                         <img src="public/uploads/<?= $photo->getPhotoName()?>">
                         <div class="collection-element-title">
                             <?= $photo->getPhotoName()?>
@@ -93,14 +57,15 @@
                     </div>
                     <?php endforeach; ?>
 
-                    <div class="add-photo-form">
-                        <form class="add-photo" method="post" name="UploadForm" enctype="multipart/form-data">
-                            <input class="select-photo" type="file" name="photo-image"/>
+                    <div class="add-form-div">
+                        <form class="add-form" method="post" name="PhotoForm" enctype="multipart/form-data">
+                            <input class="select-file" type="file" name="file-doc"/>
                             <div class="replacement">
                                 <i class="fa fa-plus-circle fa-3x" aria-hidden="true"></i>
                             </div>
-                            <input class="select-photo-title" type="text" name="photo-title">
-                            <button class="submit-button" type="submit" name="submit-photo" disabled>SUBMIT</button>
+                            <input class="select-title" type="text" name="file-title">
+                            <button class="submit-button" type="submit" name="submit-file" disabled>SUBMIT</button>
+                        </form>
                     </div>
                 </section>
 
@@ -109,41 +74,24 @@
                 </div>
 
                 <section class="collection-videos">
-                    <div class="video-item">
-                        <img src="public/img/mountains.jpg">
-                        <div class="collection-element-title">
-                            Video.avi
+                    <?php for($i = 0; $i <= 5; $i++): ?>
+                        <div class="video-item">
+                            <img src="public/img/mountains.jpg">
+                            <div class="collection-element-title">
+                                Video.avi
+                            </div>
                         </div>
-                    </div>
-                    <div class="video-item">
-                        <img src="public/img/mountains.jpg">
-                        <div class="collection-element-title">
-                            Video.avi
-                        </div>
-                    </div>
-                    <div class="video-item">
-                        <img src="public/img/mountains.jpg">
-                        <div class="collection-element-title">
-                            Video.avi
-                        </div>
-                    </div>
-                    <div class="video-item">
-                        <img src="public/img/mountains.jpg">
-                        <div class="collection-element-title">
-                            Video.avi
-                        </div>
-                    </div>
-                    <div class="video-item">
-                        <img src="public/img/mountains.jpg">
-                        <div class="collection-element-title">
-                            Video.avi
-                        </div>
-                    </div>
-                    <div class="video-item">
-                        <img src="public/img/mountains.jpg">
-                        <div class="collection-element-title">
-                            Video.avi
-                        </div>
+                    <?php endfor; ?>
+
+                    <div class="add-form-div">
+                        <form class="add-form" method="post" name="VideoForm" enctype="multipart/form-data">
+                            <input class="select-file" type="file" name="file-doc"/>
+                            <div class="replacement">
+                                <i class="fa fa-plus-circle fa-3x" aria-hidden="true"></i>
+                            </div>
+                            <input class="select-title" type="text" name="file-title">
+                            <button class="submit-button" type="submit" name="submit-file" disabled>SUBMIT</button>
+                        </form>
                     </div>
 
                 </section>
@@ -154,86 +102,19 @@
 
                 <section class="collection-memories">
 
-                    <div class="memory-item">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur Excepteur sint
-                        occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. .
-                    </div>
-                    <div class="memory-item">
-                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur Excepteur sint
-                        occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. .
-                    </div>
-                    <div class="memory-item">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur Excepteur sint
-                        occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. .
-                    </div>
-                    <div class="memory-item">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur Excepteur sint
-                        occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. .
-                    </div>
-                    <div class="memory-item">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur Excepteur sint
-                        occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. .
-                    </div>
-                    <div class="memory-item">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur Excepteur sint
-                        occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. .
-                    </div>
-                    <div class="memory-item">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur Excepteur sint
-                        occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. .
-                    </div>
-                    <div class="memory-item">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur Excepteur sint
-                        occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. .
-                    </div>
-                    <div class="memory-item">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur Excepteur sint
-                        occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. .
-                    </div>
-                    <div class="memory-item">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur Excepteur sint
-                        occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. .
-                    </div>
-                    <div class="memory-item">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur Excepteur sint
-                        occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. .
-                    </div>
-                    <div class="memory-item">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur Excepteur sint
-                        occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. .
+                    <?php foreach($memories as $memory): ?>
+                        <div class="memory-item" id="<?= $memory->getmemoryId()?>">
+                                <?= $memory->getMemoryContent()?>
+                        </div>
+                    <?php endforeach; ?>
+
+                    <div class="memory-item" id="new">
+                        Add new Memory by Clicking ME
                     </div>
                 </section>
             </div>
 
         </main>
-
-        <footer>
-
-        </footer>
         
     </div>
 
@@ -241,14 +122,5 @@
 
     </footer>
 
-    <script>
-        const photoElement = document.querySelector(".photo-item");
-        photoElement.addEventListener("click", function(){hide(photoElement); });
-
-        function hide(elem)
-        {
-            elem.style.visibility = "hidden";
-        }
-    </script>
 
 </body>

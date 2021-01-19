@@ -1,62 +1,93 @@
-$(document).ready(function() {
-    $('.add-photo').submit(function(event) {
-        var ajaxRequest;
+const submitButtons = document.querySelectorAll('.submit-button');
 
+function clickSubmitButton(element)
+{
+    element.addEventListener('click', function(event){
         event.preventDefault();
 
-        var form_data = new FormData();
-        var file_data = $('.select-photo').prop('files')[0];
-        var file_title = $('input[name="photo-title"]').val();
+        parentForm = element.parentNode;
 
-        form_data.append("action", "addPhoto");
-        form_data.append('photo_title', file_title);
-        form_data.append('photo_image', file_data);
-        alert("file title = " + file_title);
-        ajaxRequest = $.ajax(
-            {
-                url: './src/handlers/UploadHandler.php',
-                type: "post",
-                data: form_data,
-                processData: false,
-                contentType: false,
-                dataType: 'json'
+        const file_data = new FormData();
+
+        let fileType = '';
+        let actionType = '';
+        let fileTitleType = '';
+
+        if(parentForm.name == 'PhotoForm')
+        {
+            fileType = "photo_image";
+            fileTitleType = "photo_title";
+            actionType = "addPhoto";
+        }
+        else
+        {
+            fileType = "video_file";
+            fileTitleType = "video_title";
+            actionType = "addVideo";
+        }
+
+        const controllerName = 'CollectionController';
+
+        file_data.append('action', actionType);
+        file_data.append(fileType, parentForm.querySelector(".select-file").files[0]);
+        file_data.append(fileTitleType, parentForm.querySelector(".select-title").value);
+        file_data.append('handler_controller', controllerName);
+
+        const handlerUrl = './src/handlers/MultiHandler.php';
+
+        const addRequest = new Request(handlerUrl, {
+            method: 'POST',
+            body: file_data,
+            headers: new Headers()
+        });
+
+        fetch(addRequest)
+            .then((responde) => responde.json())
+            .then(function(answer){
+                if(answer.success = 'true') {
+                    alert("Successfully added photo. Still needs to be checked though ...");
+
+                    const titleDiv = document.createElement('div');
+                    titleDiv.className = 'collection-element-title';
+                    titleDiv.innerHTML = parentForm.querySelector(".select-title").value;
+
+                    let fileItself = '';
+                    if (parentForm.name == "PhotoForm")
+                    {
+                        fileItself = document.createElement('img');
+                        fileItself.src = 'public/uploads/' + parentForm.querySelector('.select-file').files[0].name;
+                    }
+                    else
+                    {
+                        fileItself = document.createElement('video');
+                        fileItself.src = 'public/uploads/' + parentForm.querySelector('.select-file').files[0].name;
+                    }
+
+                    const ItemDiv = document.createElement('div');
+
+                    if (parentForm.name == "PhotoForm")
+                    {
+                        ItemDiv.classList.add('photo-item');
+                    }
+                    else
+                    {
+                        ItemDiv.classList.add('video-item');
+                    }
+                    ItemDiv.appendChild(fileItself);
+                    ItemDiv.appendChild(titleDiv);
+
+                    parentForm.parentNode.parentNode.insertBefore(ItemDiv, parentForm);
+                }
+                else
+                {
+                    alert("File Adding failed due to " + answer.error);
+                }
             });
-        alert("after ajax");
-        ajaxRequest.done(function(result) {
-            alert(result["error"] + " " + result["success"])
-            if(result["success"] == "true")
-            {
-                alert("Successfully added photo. Still needs to be checked though ...");
-                var titleDiv = document.createElement('div');
-                titleDiv.className = 'collection-element-title';
-                titleDiv.innerHTML = file_title;
-
-                var photoImg = document.createElement('img');
-                photoImg.src = 'public/uploads/'+file_data.name;
-
-                var photoItemDiv = document.createElement('div');
-                photoItemDiv.classList.add('photo-item');
-                photoItemDiv.appendChild(photoImg);
-                photoItemDiv.appendChild(titleDiv);
-
-                var uploadForm = document.querySelector('.add-photo-form');
-                uploadForm.parentNode.insertBefore(photoItemDiv, uploadForm);
-
-            }
-            else
-            {
-                alert("Adding failed due to " + result["error"]);
-            }
-        });
-        ajaxRequest.fail(function( result, jqXHR, textStatus){
-            alert("failed due to " + textStatus + " " + jqXHR);
-        });
-
-        ajaxRequest.always(function(){
-            alert("completed");
-            $(".select-photo").val(null);
-            $(".select-photo-title").val(null);
-        });
     });
+}
 
-});
+submitButtons.forEach(function(elem){
+    clickSubmitButton(elem);
+})
+
+const memoryObjects = document.querySelectorAll('.memory-item');

@@ -36,13 +36,13 @@ class UserDAO extends DAO
     {
         $statement = $this->connection->prepare("SELECT us_d.id FROM public.user_details AS us_d WHERE 
                                     us_d.name = :name AND us_d.surname = :surname");
-        $statement->bindParam(":name", $name, PDO::PARAM_STR);
-        $statement->bindParam(":surname", $surname, PDO::PARAM_STR);
+        $statement->bindValue(":name", $name, PDO::PARAM_STR);
+        $statement->bindValue(":surname", $surname, PDO::PARAM_STR);
 
         $statement->execute();
         $user_details_item_id = $statement->fetch(PDO::FETCH_ASSOC);
 
-        if($user_details_item_id === false or $user_details_item_id === null)
+        if(!$user_details_item_id['id'])
         {
             $statement = $this->connection->prepare("INSERT INTO public.user_details (name, surname) VALUES 
                                                (?, ?)");
@@ -55,13 +55,62 @@ class UserDAO extends DAO
                           user_details, registration_date) VALUES (?, ?, ?, ?, ?)");
 
         $statement->bindValue(1, $email, PDO::PARAM_STR);
-        $statement->bindValue(2, $password, PDO::PARAM_STR);
+        $statement->bindValue(2, password_hash($password, PASSWORD_DEFAULT), PDO::PARAM_STR);
         $statement->bindValue(3, true, PDO::PARAM_BOOL);
-        $statement->bindValue(4, intval($user_details_item_id), PDO::PARAM_INT);
+        $statement->bindValue(4, intval($user_details_item_id['id']), PDO::PARAM_INT);
         $statement->bindValue(5, date("Y-m-d"), PDO::PARAM_STR);
 
         $statement->execute();
 
-        return $this->connection->lastInsertId();
+        $userId = $this->connection->lastInsertId();
+
+        $statement = $this->connection->prepare("INSERT INTO public.user_roles (user_id, role_id) VALUES(?, ?)");
+        $statement->bindValue(1, $userId);
+        $statement->bindValue(2, 0);
+
+        $statement->execute();
+
+        return $userId;
+    }
+
+    public function deleteThisUser(int $user_id) : bool
+    {
+        $statement = $this->connection->prepare("DELETE FROM public.users WHERE id = :user_id");
+        $statement->bindValue(":user_id", $user_id);
+        if($statement->execute())
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public function getUsersRolePermissions(int $user_id)
+    {
+        $statement = $this->connection->prepare("SELECT perm.permission_name FROM public.user_roles AS u_r INNER JOIN public.roles_permissions AS r_p ON u_r.role_id =
+        r_p.role_id INNER JOIN public.permissions AS perm ON r_p.permission_id = perm.id WHERE u_r.user_id = :user_id");
+        $statement->bindValue(":user_id", $user_id);
+        $statement->execute();
+
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $arr = [];
+        foreach($result as $res)
+        {
+            $arr[] = $res['permission_name'];
+        }
+        $allPermissions = ['delete_permission', 'edit_permission', 'add_permission', 'forum_access',
+            'profile_access', 'settings_access', 'collection_access'];
+        $resolvedPermissions = array();
+        foreach($allPermissions as $perm)
+        {
+            if(in_array($perm, $arr))
+            {
+                $resolvedPermissions[$perm] = 'true';
+            }
+            else
+            {
+                $resolvedPermissions[$perm] = 'false';
+            }
+        }
+        return $resolvedPermissions;
     }
 }

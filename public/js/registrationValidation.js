@@ -100,11 +100,8 @@ submitButton.addEventListener("click", function(event){
         validFields += 1;
     }
 
-    alert(validFields);
-
     if(validFields === 5)
     {
-        alert("All fields are valid");
         const formData = new FormData();
         formData.append("action", "addNewUser");
         formData.append("name", userNameField.value);
@@ -112,14 +109,13 @@ submitButton.addEventListener("click", function(event){
         formData.append("email", userEmailField.value);
         formData.append("password", userPasswordField.value);
 
-        const handlerUrl = './src/handlers/RegistrationHandler.php';
+        const handlerUrl = './src/handlers/MultiHandler.php';
 
         const request = new Request(handlerUrl, {
             method: 'POST',
             body: formData,
             headers: new Headers()
         });
-        alert("Sending adding request");
         fetch(request)
             .then((result) => result.json())
             .then(function(data){
@@ -127,17 +123,16 @@ submitButton.addEventListener("click", function(event){
                 if(data.success === 'true')
                 {
                     alert("Successfully added user.");
-
                     const actionRequest = new FormData();
                     actionRequest.append("action", "redirectNewUser");
                     actionRequest.append('created_user_email', userEmailField.value);
+                    actionRequest.append('handler_controller', 'RegistrationController');
 
                     const successRequest = new Request(handlerUrl, {
                         method: 'POST',
                         body: actionRequest,
                         headers: new Headers()
                     });
-                    alert("Sending redirection request");
                     fetch(successRequest)
                         .then(function(response) {
                             return response.json();
@@ -149,8 +144,6 @@ submitButton.addEventListener("click", function(event){
                                 let time = now.getTime();
                                 time += 3600 * 1000;
                                 now.setTime(time);
-                                alert('url = ' + answer.url);
-                                alert('user id' + answer.user_id);
                                 document.cookie = "user_id=" + answer.user_id + '; expires' + now.toUTCString() + '; path=/';
                                 window.location.replace(answer.url);
                             }
@@ -174,26 +167,21 @@ submitButton.addEventListener("click", function(event){
 const cancelButton = document.querySelector(".cancel-registration-btn");
 cancelButton.addEventListener("click", function(event){
     event.preventDefault();
-    const handlerUrl = './src/handlers/RegistrationHandler.php';
-    alert("inside the cancel bytton");
+    const handlerUrl = './src/handlers/MultiHandler.php';
     const actionForm = new FormData();
     actionForm.append("action", "getUrlForCancelButton");
+    actionForm.append('handler_controller', 'RegistrationController');
     const cancelRequest = new Request(handlerUrl, {
         method: 'POST',
         body: actionForm,
         headers: new Headers()
     });
 
-    alert("BEfore fetch");
-
     fetch(cancelRequest)
         .then(function(responde){
-            alert("in first then");
             return responde.json();
         })
         .then(function(data){
-            alert(data);
-            alert("URL = " + data.url);
             if(data.success === 'true')
             {
                 alert("Success");

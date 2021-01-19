@@ -3,6 +3,7 @@
     <link rel="stylesheet" type="text/css" href="public/css/style.css?<?php echo time() ?>"/>
     <title>PROFILE</title>
     <script src="https://kit.fontawesome.com/d9f59e1a3c.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./public/js/permissionCheck.js" defer></script>
     <script type="text/javascript" src="./public/js/menutoggle.js" defer></script>
     <script type="text/javascript" src="./public/js/profileInfoEditing.js" defer></script>
 </head>
@@ -16,60 +17,7 @@
 
         <main>
 
-            <div class="toggle">
-
-            </div>
-
-            <div class="sidebar" id="passive">
-
-                <div class="profile-pic">
-
-                </div>
-
-                <div class="handle">
-
-                </div>
-
-                <ul>
-
-                    <li class="head-sidebar-element">
-                        <a href="profile">
-                            <i class="fas fa-address-card"><span>Profile</span></i>
-                        </a>
-                    </li>
-                    <li class="sidebar-element">
-                        <a href="forum">
-                            <i class="fas fa-comments"><span>Forum</span></i>
-                        </a>
-                    </li>
-                    <li class="sidebar-element">
-                        <a href="collection">
-                            <i class="fas fa-photo-video"><span>Collection</span></i>
-                        </a>
-                    </li>
-                    <li class="foot-sidebar-element">
-                        <a href="settings">
-                            <i class="fas fa-cogs"><span>Settings</span></i>
-                        </a>
-                    </li>
-
-                </ul>
-
-                <div class="wheels">
-
-                   <span class="wheel"></span>
-
-                   <span class="wheel"></span>
-
-                </div>
-
-                <div class="exit">
-                    <a href="login">
-                        <i class="fas fa-door-open"><span>Exit</span></i>
-                    </a>
-                </div>
-
-            </div>
+            <?php include 'public/templates/sidebarTemplate.php'?>
 
             <div class="profile-content">
                 <div class="profile-head">
@@ -87,15 +35,15 @@
                     </div>
 
                     <div class="text-bubble">
-                        <div class="const-about-me">
+                        <div class="const-info" name="about-me">
                             <?php echo $about_me?>
                         </div>
-                        <textarea class="editable-about-me" id="hidden">
+                        <textarea class="editable-info" id="hidden">
                         </textarea>
                         <div class="profile-editing-buttons-section">
-                            <button class="edit-about-me"></button>
-                            <button class="submit-edit-about-me" id="hidden"></button>
-                            <button class="cancel-edit-about-me" id="hidden"></button>
+                            <button class="edit-button" name="edit-about-me">Edit</button>
+                            <button class="submit-edit-button" id="hidden" name="submit-about-me-edit">OK</button>
+                            <button class="cancel-edit-button" id="hidden" name="cancel-about-me-edit">Cancel</button>
                         </div>
                     </div>
 
@@ -106,11 +54,16 @@
                     </div>
 
                     <div class="text-bubble">
-                        <div class="const-code">
+                        <div class="const-info" name="code">
                             <?php echo $code?>
                         </div>
-                        <textarea class="editable-code" id="hidden">
+                        <textarea class="editable-info" id="hidden">
                         </textarea>
+                        <div class="profile-editing-buttons-section">
+                            <button class="edit-button" name="edit-code">Edit</button>
+                            <button class="submit-edit-button" id="hidden" name="submit-code-edit">OK</button>
+                            <button class="cancel-edit-button" id="hidden"  name="cancel-code-edit">Cancel</button>
+                        </div>
                     </div>
                 </div>
             </div>

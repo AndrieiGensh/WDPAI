@@ -14,7 +14,7 @@ class PhotoDAO extends DAO
 
     public function getAllPhotosOfThisUser(int $user_id) :?array
     {
-        $statement  = $this->connection->prepare("SELECT pho.name_on_server, pho.title FROM public.photos as pho
+        $statement  = $this->connection->prepare("SELECT pho.id, pho.name_on_server, pho.title FROM public.photos as pho
             INNER JOIN public.users_photos as upho ON upho.photo_id = pho.id WHERE upho.user_id = :user_id");
         $statement->bindParam(":user_id", $user_id, PDO::PARAM_INT);
         $statement->execute();
@@ -25,7 +25,7 @@ class PhotoDAO extends DAO
 
         foreach($photos as $photo)
         {
-            $result[] = new Photo($photo["name_on_server"], $photo["title"]);
+            $result[] = new Photo($photo["id"], $photo["name_on_server"], $photo["title"]);
         }
 
         return $result;

@@ -5,19 +5,31 @@ class Memory
 {
     private $memoryName;
     private $memoryContent;
+    private $memoryId;
 
-    public function __construct(string $name, string $content)
+    public function __construct(int $memory_id, string $name, string $content)
     {
-        $this->memoryContent = $name;
-        $this->$this->memoryContent = $content;
+        $this->memoryName = $name;
+        $this->memoryContent = $content;
+        $this->memoryId = $memory_id;
     }
 
-    public function getMemoryName()
+    public function getMemoryName() : string
     {
         return $this->memoryName;
     }
 
-    public function setMemoryName($memoryName): void
+    public function setMemoryId(int $memoryId): void
+    {
+        $this->memoryId = $memoryId;
+    }
+
+    public function getMemoryId() : int
+    {
+        return $this->memoryId;
+    }
+
+    public function setMemoryName(string $memoryName): void
     {
         $this->memoryName = $memoryName;
     }
